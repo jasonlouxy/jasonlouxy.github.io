@@ -260,7 +260,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-25T14:45:18+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-25T21:53:51+08:00">
                 2019-07-25
               </time>
             
@@ -319,7 +319,7 @@
 <p>启动hexo服务器：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
-<p>此时，浏览器中打开网址<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>，就能看到以下页面：<br><img src="https://images2015.cnblogs.com/blog/958489/201610/958489-20161002114102484-765820472.png" alt="hexo博客页面"></p>
+<p>此时，浏览器中打开网址<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>，就能看到以下页面：<br><img src="https://t1.picb.cc/uploads/2019/07/25/gr12m8.jpg" alt="hexo博客页面"></p>
 <p>至此，本地设置完毕，接下去要关联github。</p>
 <h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>登陆github账号，新建repository，取名格式为 <em>用户名.github.io</em>，比如：jasonlouxy.github.io</p>
 <p>进入blog目录，vim打开_config.yml，找到deploy，并且修改：</p>
@@ -342,6 +342,15 @@
 
 <p>邮箱为github注册的邮箱地址</p>
 <p>将ssh key添加到github中：打开id_rsa.pub文件，将内容复制到github的add ssh key页面即可</p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>可以用自己的域名来替代github的，先要查询博客的ip地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ping jasonlouxy.github.io</span><br></pre></td></tr></table></figure>
+
+<p>添加域名解析：</p>
+<ol>
+<li>A地址，主机记录www，记录值为查询获得的ip地址；</li>
+<li>CNAME，主机记录@，记录值为jasonlouxy.github.io</li>
+<li>进入github中博客的repository页面（jasonlouxy/jasonlouxy.github.io），选择settings，找到GitHub Pages，在Custom domain中填写自己的域名，保存后完成</li>
+</ol>
 <h2 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h2><ol>
 <li>在blog文件夹下，执行：</li>
 </ol>
