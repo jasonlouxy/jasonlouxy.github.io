@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="通达信行情接口pytdx用法作者说明链接 标准行情 pytdx.hq引入 1from pytdx.hq import TdxHq_API  创建对象 1api = TdxHq_API()  建立连接 1234conn = api.connect(&amp;apos;122.224.113.120&amp;apos;, 7709)# 方正证券 杭州conn = api.connect(&amp;apos;47.103.8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="a flying piggie">
+<meta property="og:url" content="http://yoursite.com/2019/09/06/行情接口pytdx用法/index.html">
+<meta property="og:site_name" content="a flying piggie">
+<meta property="og:description" content="通达信行情接口pytdx用法作者说明链接 标准行情 pytdx.hq引入 1from pytdx.hq import TdxHq_API  创建对象 1api = TdxHq_API()  建立连接 1234conn = api.connect(&amp;apos;122.224.113.120&amp;apos;, 7709)# 方正证券 杭州conn = api.connect(&amp;apos;47.103.8">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-06T03:00:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="a flying piggie">
+<meta name="twitter:description" content="通达信行情接口pytdx用法作者说明链接 标准行情 pytdx.hq引入 1from pytdx.hq import TdxHq_API  创建对象 1api = TdxHq_API()  建立连接 1234conn = api.connect(&amp;apos;122.224.113.120&amp;apos;, 7709)# 方正证券 杭州conn = api.connect(&amp;apos;47.103.8">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/06/行情接口pytdx用法/">
+
+
+
+
+
+  <title> | a flying piggie</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">a flying piggie</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/06/行情接口pytdx用法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Lou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="a flying piggie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-06T11:05:37+08:00">
+                2019-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h2 id="通达信行情接口pytdx用法"><a href="#通达信行情接口pytdx用法" class="headerlink" title="通达信行情接口pytdx用法"></a>通达信行情接口pytdx用法</h2><p><a href="https://rainx.gitbooks.io/pytdx/content/" target="_blank" rel="noopener">作者说明链接</a></p>
+<h2 id="标准行情-pytdx-hq"><a href="#标准行情-pytdx-hq" class="headerlink" title="标准行情 pytdx.hq"></a>标准行情 pytdx.hq</h2><p>引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from pytdx.hq import TdxHq_API</span><br></pre></td></tr></table></figure>
+
+<p>创建对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api = TdxHq_API()</span><br></pre></td></tr></table></figure>
+
+<p>建立连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conn = api.connect(&apos;122.224.113.120&apos;, 7709)</span><br><span class="line"># 方正证券 杭州</span><br><span class="line">conn = api.connect(&apos;47.103.88.146&apos;, 7709)</span><br><span class="line"># 通达信 上海</span><br></pre></td></tr></table></figure>
+
+<p>工作结束时，需要关闭连接，否则以后会无法连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.disconnect()</span><br></pre></td></tr></table></figure>
+
+<p>行情服务器列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from pytdx.config.hosts import hq_hosts</span><br></pre></td></tr></table></figure>
+
+<h3 id="api-方法"><a href="#api-方法" class="headerlink" title="api 方法"></a>api 方法</h3><ul>
+<li>获取股票行情：需要传入一个列表，每个列表由一个市场代码， 一个股票代码构成的元祖构成 [ (市场代码1， 股票代码1)，(市场代码2， 股票代码2) … (市场代码n， 股票代码n) ]，如：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.get_security_quotes([(0, &apos;000001&apos;), (1, &apos;600300&apos;)])</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意点：非股票品种代码，有些获取的价格不是实际价格，比如可转债获取价格为实际价格 x 10。这是可能是TDX为了防止浮点数错误，报价在传输和存储时实际都保存为整数，然后根据品种进行处理的结果。</p>
+</blockquote>
+<p>获得的结果是个OrderedDict，字段包含：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">market</span><br><span class="line">code</span><br><span class="line">active1</span><br><span class="line">price</span><br><span class="line">last_close</span><br><span class="line">open</span><br><span class="line">high</span><br><span class="line">low</span><br><span class="line">reversed_bytes0</span><br><span class="line">reversed_bytes1</span><br><span class="line">vol</span><br><span class="line">cur_vol</span><br><span class="line">amount</span><br><span class="line">s_vol</span><br><span class="line">b_vol</span><br><span class="line">reversed_bytes2</span><br><span class="line">reversed_bytes3</span><br><span class="line">bid1</span><br><span class="line">ask1</span><br><span class="line">bid_vol1</span><br><span class="line">ask_vol1</span><br><span class="line">bid2</span><br><span class="line">ask2</span><br><span class="line">bid_vol2</span><br><span class="line">ask_vol2</span><br><span class="line">bid3</span><br><span class="line">ask3</span><br><span class="line">bid_vol3</span><br><span class="line">ask_vol3</span><br><span class="line">bid4</span><br><span class="line">ask4</span><br><span class="line">bid_vol4</span><br><span class="line">ask_vol4</span><br><span class="line">bid5</span><br><span class="line">ask5</span><br><span class="line">bid_vol5</span><br><span class="line">ask_vol5</span><br><span class="line">reversed_bytes4</span><br><span class="line">reversed_bytes5</span><br><span class="line">reversed_bytes6</span><br><span class="line">reversed_bytes7</span><br><span class="line">reversed_bytes8</span><br><span class="line">reversed_bytes9</span><br><span class="line">active2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取k线：api.get_security_bars(type, market, code, start, count)<br>  type：0，5分钟；1，15分钟；2，30分钟；3，小时；4，日线，5，周线；6，月线；10，季线；11，年线<br>  market：0，深圳；1，上海<br>  start：指定的范围开始位置<br>  count：要求的k线数目，最大值为800</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.get_security_bars(1, 1, ‘600000’, 4, 3)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取市场股票数量：api.get_security_count(market)</li>
+<li>获取股票列表：api.get_security_list(market, start)</li>
+<li>获取指数k线：api.get_index_bars(type, market, code, start, count)</li>
+<li>查询分时行情：api.get_minute_time_data(market, code)</li>
+<li>查询历史分时行情：api.get_history_minute_time_data(market, code, date)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.get_history_minute_time_data(TDXParams.MARKET_SH, ‘600300’, 20161209)</span><br></pre></td></tr></table></figure>
+
+<p>注：在引入TDXParams之后，<code>from pytdx.params import TDXParams</code>，可以使用 TDXParams.MARKET_SH 和 TDXParams.MARKET_SZ 作为常量来替代1和0作为参数</p>
+<ul>
+<li>查询分笔成交：api.get_transaction_data(market, code, start, count)</li>
+<li>查询历史分笔成交：api.get_history_transaction_data(market, code, start, count, date)</li>
+<li>查询公司信息目录：api.get_company_info_categroy(market, code)</li>
+<li>读取公司信息详情：api.get_company_info_content(market, code, filename, start, count)</li>
+<li>读取除权除息信息：api.get_xdxr_info(market, code)，结果是个list，列出每年的分红、送股、配股、缩股、行权</li>
+<li>读取财务信息：api.get_finance_info(market, code)</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/25/基于hexo+github搭建博客/" rel="next" title="基于hexo+github搭建博客">
+                <i class="fa fa-chevron-left"></i> 基于hexo+github搭建博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/06/Markdown基本语法/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jason Lou</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#通达信行情接口pytdx用法"><span class="nav-number">1.</span> <span class="nav-text">通达信行情接口pytdx用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准行情-pytdx-hq"><span class="nav-number">2.</span> <span class="nav-text">标准行情 pytdx.hq</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#api-方法"><span class="nav-number">2.1.</span> <span class="nav-text">api 方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Lou</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
