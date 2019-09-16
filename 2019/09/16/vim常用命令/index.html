@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Markdown是一种纯文本格式的标记语言。通过简单的标记语法，可以使普通文本内容具有一定的格式。 标题在想要设置为标题的文字前面加#来表示一个#是一级标题，两个#是二级标题，以此类推，支持六级标题。 字体 加粗：要加粗的文字左右分别用两个*号包起来 斜体：要倾斜的文字左右分别用一个*号包起来 斜体加粗：要倾斜和加粗的文字左右分别用三个*号包起来 删除线：要加删除线的文字左右分别用两个~号包起来">
+<meta name="description" content="正常模式（Normal Mode）浏览和修改文本内容，一般的，打开 Vim 都是正常模式。在任何模式下，只要按下 Esc 键就可以返回正常模式。    命令 作用（解释）    h 表示往左   j 表示往下   k 表示往右   l 表示往上   ctrl + f 上一页   ctrl + b 下一页   w,e / W,E 跳到单词的后面，小写包括标点   b,B 单词为单位往前跳动光标，小写">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown基本语法">
-<meta property="og:url" content="http://yoursite.com/2019/09/06/Markdown基本语法/index.html">
+<meta property="og:title" content="vim常用命令">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/vim常用命令/index.html">
 <meta property="og:site_name" content="a flying piggie">
-<meta property="og:description" content="Markdown是一种纯文本格式的标记语言。通过简单的标记语法，可以使普通文本内容具有一定的格式。 标题在想要设置为标题的文字前面加#来表示一个#是一级标题，两个#是二级标题，以此类推，支持六级标题。 字体 加粗：要加粗的文字左右分别用两个*号包起来 斜体：要倾斜的文字左右分别用一个*号包起来 斜体加粗：要倾斜和加粗的文字左右分别用三个*号包起来 删除线：要加删除线的文字左右分别用两个~号包起来">
+<meta property="og:description" content="正常模式（Normal Mode）浏览和修改文本内容，一般的，打开 Vim 都是正常模式。在任何模式下，只要按下 Esc 键就可以返回正常模式。    命令 作用（解释）    h 表示往左   j 表示往下   k 表示往右   l 表示往上   ctrl + f 上一页   ctrl + b 下一页   w,e / W,E 跳到单词的后面，小写包括标点   b,B 单词为单位往前跳动光标，小写">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-06T03:26:55.000Z">
+<meta property="og:updated_time" content="2019-09-16T01:47:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Markdown基本语法">
-<meta name="twitter:description" content="Markdown是一种纯文本格式的标记语言。通过简单的标记语法，可以使普通文本内容具有一定的格式。 标题在想要设置为标题的文字前面加#来表示一个#是一级标题，两个#是二级标题，以此类推，支持六级标题。 字体 加粗：要加粗的文字左右分别用两个*号包起来 斜体：要倾斜的文字左右分别用一个*号包起来 斜体加粗：要倾斜和加粗的文字左右分别用三个*号包起来 删除线：要加删除线的文字左右分别用两个~号包起来">
+<meta name="twitter:title" content="vim常用命令">
+<meta name="twitter:description" content="正常模式（Normal Mode）浏览和修改文本内容，一般的，打开 Vim 都是正常模式。在任何模式下，只要按下 Esc 键就可以返回正常模式。    命令 作用（解释）    h 表示往左   j 表示往下   k 表示往右   l 表示往上   ctrl + f 上一页   ctrl + b 下一页   w,e / W,E 跳到单词的后面，小写包括标点   b,B 单词为单位往前跳动光标，小写">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/06/Markdown基本语法/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/vim常用命令/">
 
 
 
 
 
-  <title>Markdown基本语法 | a flying piggie</title>
+  <title>vim常用命令 | a flying piggie</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/06/Markdown基本语法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/vim常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jason Lou">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Markdown基本语法</h1>
+          <h1 class="post-title" itemprop="name headline">vim常用命令</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-06T11:27:03+08:00">
-                2019-09-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T09:48:59+08:00">
+                2019-09-16
               </time>
             
 
@@ -299,44 +299,238 @@
       
 
       
-        <p>Markdown是一种纯文本格式的标记语言。通过简单的标记语法，可以使普通文本内容具有一定的格式。</p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>在想要设置为标题的文字前面加#来表示<br>一个#是一级标题，两个#是二级标题，以此类推，支持六级标题。</p>
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><ul>
-<li><strong>加粗</strong>：要加粗的文字左右分别用两个*号包起来</li>
-<li><em>斜体</em>：要倾斜的文字左右分别用一个*号包起来</li>
-<li><strong><em>斜体加粗</em></strong>：要倾斜和加粗的文字左右分别用三个*号包起来</li>
-<li><del>删除线</del>：要加删除线的文字左右分别用两个~号包起来</li>
-</ul>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>在引用的文字前加&gt;即可，比如：</p>
-<blockquote>
-<p>这样</p>
-</blockquote>
-<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>三个或者三个以上的 - 或者 * 都可以，显示效果是一样的。</p>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：![图片下方的注释内容](图片地址<span class="string">"图片标题"</span>)</span><br></pre></td></tr></table></figure>
-
-<p>图片标题：当鼠标移动到图片上时显示的内容，可加可不加</p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：[链接名称](链接地址<span class="string">"链接标题"</span>)</span><br></pre></td></tr></table></figure>
-
-<p>不支持链接在新页面中打开，如果想要在新页面中打开的话，可以用html语言的a标签代替：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"链接地址"</span> target=<span class="string">"_blank"</span>&gt;链接名称&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><ul>
-<li>无序列表：用 - + * 任何一种都可以</li>
-<li>有序列表：数字加点</li>
-<li>列表嵌套：下级列表tab缩进即可</li>
-</ul>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">-|:-:|-:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br></pre></td></tr></table></figure>
-
-<p>第二行分割表头和内容<br>文字默认居左</p>
-<ul>
-<li>两边加-：表示文字居中</li>
-<li>右边加-：表示文字居右</li>
-</ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>单行代码：前后用反引号（`）包起来<br>代码块：前后用三个反引号号包起来</p>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">```flow</span><br><span class="line">st=&gt;start: Start</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```flow</span><br><span class="line">st=&gt;start: Start</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;</span><br></pre></td></tr></table></figure>
-
+        <h2 id="正常模式（Normal-Mode）"><a href="#正常模式（Normal-Mode）" class="headerlink" title="正常模式（Normal Mode）"></a>正常模式（Normal Mode）</h2><p>浏览和修改文本内容，一般的，打开 Vim 都是正常模式。在任何模式下，只要按下 Esc 键就可以返回正常模式。</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用（解释）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">h</td>
+<td align="center">表示往左</td>
+</tr>
+<tr>
+<td align="center">j</td>
+<td align="center">表示往下</td>
+</tr>
+<tr>
+<td align="center">k</td>
+<td align="center">表示往右</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">表示往上</td>
+</tr>
+<tr>
+<td align="center">ctrl + f</td>
+<td align="center">上一页</td>
+</tr>
+<tr>
+<td align="center">ctrl + b</td>
+<td align="center">下一页</td>
+</tr>
+<tr>
+<td align="center">w,e / W,E</td>
+<td align="center">跳到单词的后面，小写包括标点</td>
+</tr>
+<tr>
+<td align="center">b,B</td>
+<td align="center">单词为单位往前跳动光标，小写包含标点</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">开启新的一行</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">一行的开始</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">一行的结尾</td>
+</tr>
+<tr>
+<td align="center">gg</td>
+<td align="center">文档的第一行</td>
+</tr>
+<tr>
+<td align="center">[N]G</td>
+<td align="center">文档的第 N 行或者最后一行</td>
+</tr>
+<tr>
+<td align="center">dd</td>
+<td align="center">删除一行</td>
+</tr>
+<tr>
+<td align="center">dw</td>
+<td align="center">删除一个单词</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">删除后一个字符</td>
+</tr>
+<tr>
+<td align="center">X</td>
+<td align="center">删除前一个字符</td>
+</tr>
+<tr>
+<td align="center">D</td>
+<td align="center">删除一行最后一个字符</td>
+</tr>
+<tr>
+<td align="center">[N]yy</td>
+<td align="center">复制一行或者 N 行</td>
+</tr>
+<tr>
+<td align="center">yw</td>
+<td align="center">复制一个单词</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">粘贴</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">撤销上一步操作</td>
+</tr>
+<tr>
+<td align="center">ctrl+ r</td>
+<td align="center">恢复上一步操作</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">重复最后一个命令</td>
+</tr>
+<tr>
+<td align="center">/pattern</td>
+<td align="center">向光标下搜索字符串，可以是正则表达式</td>
+</tr>
+<tr>
+<td align="center">?pattern</td>
+<td align="center">向光标上搜索字符串</td>
+</tr>
+<tr>
+<td align="center">n</td>
+<td align="center">向下搜索前一个搜素动作</td>
+</tr>
+<tr>
+<td align="center">N</td>
+<td align="center">向上搜索前一个搜索动作</td>
+</tr>
+</tbody></table>
+<h2 id="插入模式（Insert-Mode）"><a href="#插入模式（Insert-Mode）" class="headerlink" title="插入模式（Insert Mode）"></a>插入模式（Insert Mode）</h2><p>向文本中添加内容</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用（解释)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">i</td>
+<td align="center">插入到光标前面</td>
+</tr>
+<tr>
+<td align="center">I</td>
+<td align="center">插入到行的开始位置</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">插入到光标的后面</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">插入到行的最后位置</td>
+</tr>
+<tr>
+<td align="center">o, O</td>
+<td align="center">新开一行</td>
+</tr>
+<tr>
+<td align="center">Esc</td>
+<td align="center">关闭插入模式</td>
+</tr>
+</tbody></table>
+<h2 id="视觉模式-Visual-Mode"><a href="#视觉模式-Visual-Mode" class="headerlink" title="视觉模式 (Visual Mode)"></a>视觉模式 (Visual Mode)</h2><p>相当于高亮选取文本后的普通模式，可视模式具有子模式，以行为单位进行选取的可视行模式，使用 “V” 键进入（也就是 Shift+v ）；和以块为单位进行选取的可视块模式，使用 “Ctrl+v” 键进入。</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用（解释)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">v</td>
+<td align="center">选中一个或多个字符</td>
+</tr>
+<tr>
+<td align="center">V</td>
+<td align="center">选中行</td>
+</tr>
+<tr>
+<td align="center">ctrl+ v</td>
+<td align="center">选中列</td>
+</tr>
+</tbody></table>
+<h2 id="命令模式-Command-Mode"><a href="#命令模式-Command-Mode" class="headerlink" title="命令模式 (Command Mode)"></a>命令模式 (Command Mode)</h2><p>操作文本文件（而不是操作文本文件的内容），例如保存文件；或者用来改变编辑器本身的状态，例如设定多栏窗口、标签或者退出编辑器</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用（解释)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">:set nu</td>
+<td align="center">显示行号</td>
+</tr>
+<tr>
+<td align="center">:set nonu</td>
+<td align="center">取消显示行号</td>
+</tr>
+<tr>
+<td align="center">:set paste</td>
+<td align="center">设置粘贴模式</td>
+</tr>
+<tr>
+<td align="center">:%s/old/new/g</td>
+<td align="center">全文替换</td>
+</tr>
+<tr>
+<td align="center">:w</td>
+<td align="center">保存</td>
+</tr>
+<tr>
+<td align="center">:wq, :x</td>
+<td align="center">保存并关闭</td>
+</tr>
+<tr>
+<td align="center">:q</td>
+<td align="center">关闭（已保存）</td>
+</tr>
+<tr>
+<td align="center">:q!</td>
+<td align="center">强制关闭</td>
+</tr>
+<tr>
+<td align="center">:split</td>
+<td align="center">水平方向分割出一个窗口</td>
+</tr>
+<tr>
+<td align="center">:vsplit</td>
+<td align="center">垂直方向分割出一个窗口</td>
+</tr>
+<tr>
+<td align="center">:close</td>
+<td align="center">关闭窗口</td>
+</tr>
+<tr>
+<td align="center">ctrl+ w</td>
+<td align="center">切换窗口， h 到左边窗口，j 到下方窗口，k 到上方窗口，l 到右边窗口</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -361,8 +555,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/25/基于hexo+github搭建博客/" rel="next" title="基于hexo+github搭建博客">
-                <i class="fa fa-chevron-left"></i> 基于hexo+github搭建博客
+              <a href="/2019/09/06/行情接口pytdx用法/" rel="next" title="通达信行情接口pytdx用法">
+                <i class="fa fa-chevron-left"></i> 通达信行情接口pytdx用法
               </a>
             
           </div>
@@ -370,10 +564,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/06/行情接口pytdx用法/" rel="prev" title="通达信行情接口pytdx用法">
-                通达信行情接口pytdx用法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -487,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体"><span class="nav-number">2.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分割线"><span class="nav-number">4.</span> <span class="nav-text">分割线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">5.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">6.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">7.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">8.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">9.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程图"><span class="nav-number">10.</span> <span class="nav-text">流程图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#正常模式（Normal-Mode）"><span class="nav-number">1.</span> <span class="nav-text">正常模式（Normal Mode）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入模式（Insert-Mode）"><span class="nav-number">2.</span> <span class="nav-text">插入模式（Insert Mode）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视觉模式-Visual-Mode"><span class="nav-number">3.</span> <span class="nav-text">视觉模式 (Visual Mode)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令模式-Command-Mode"><span class="nav-number">4.</span> <span class="nav-text">命令模式 (Command Mode)</span></a></li></ol></div>
             
 
           </div>

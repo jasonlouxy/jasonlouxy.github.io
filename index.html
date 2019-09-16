@@ -229,6 +229,357 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/vim常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Lou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="a flying piggie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/16/vim常用命令/" itemprop="url">vim常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T09:48:59+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="正常模式（Normal-Mode）"><a href="#正常模式（Normal-Mode）" class="headerlink" title="正常模式（Normal Mode）"></a>正常模式（Normal Mode）</h2><p>浏览和修改文本内容，一般的，打开 Vim 都是正常模式。在任何模式下，只要按下 Esc 键就可以返回正常模式。</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用（解释）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">h</td>
+<td align="center">表示往左</td>
+</tr>
+<tr>
+<td align="center">j</td>
+<td align="center">表示往下</td>
+</tr>
+<tr>
+<td align="center">k</td>
+<td align="center">表示往右</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">表示往上</td>
+</tr>
+<tr>
+<td align="center">ctrl + f</td>
+<td align="center">上一页</td>
+</tr>
+<tr>
+<td align="center">ctrl + b</td>
+<td align="center">下一页</td>
+</tr>
+<tr>
+<td align="center">w,e / W,E</td>
+<td align="center">跳到单词的后面，小写包括标点</td>
+</tr>
+<tr>
+<td align="center">b,B</td>
+<td align="center">单词为单位往前跳动光标，小写包含标点</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">开启新的一行</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">一行的开始</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">一行的结尾</td>
+</tr>
+<tr>
+<td align="center">gg</td>
+<td align="center">文档的第一行</td>
+</tr>
+<tr>
+<td align="center">[N]G</td>
+<td align="center">文档的第 N 行或者最后一行</td>
+</tr>
+<tr>
+<td align="center">dd</td>
+<td align="center">删除一行</td>
+</tr>
+<tr>
+<td align="center">dw</td>
+<td align="center">删除一个单词</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">删除后一个字符</td>
+</tr>
+<tr>
+<td align="center">X</td>
+<td align="center">删除前一个字符</td>
+</tr>
+<tr>
+<td align="center">D</td>
+<td align="center">删除一行最后一个字符</td>
+</tr>
+<tr>
+<td align="center">[N]yy</td>
+<td align="center">复制一行或者 N 行</td>
+</tr>
+<tr>
+<td align="center">yw</td>
+<td align="center">复制一个单词</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">粘贴</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">撤销上一步操作</td>
+</tr>
+<tr>
+<td align="center">ctrl+ r</td>
+<td align="center">恢复上一步操作</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">重复最后一个命令</td>
+</tr>
+<tr>
+<td align="center">/pattern</td>
+<td align="center">向光标下搜索字符串，可以是正则表达式</td>
+</tr>
+<tr>
+<td align="center">?pattern</td>
+<td align="center">向光标上搜索字符串</td>
+</tr>
+<tr>
+<td align="center">n</td>
+<td align="center">向下搜索前一个搜素动作</td>
+</tr>
+<tr>
+<td align="center">N</td>
+<td align="center">向上搜索前一个搜索动作</td>
+</tr>
+</tbody></table>
+<h2 id="插入模式（Insert-Mode）"><a href="#插入模式（Insert-Mode）" class="headerlink" title="插入模式（Insert Mode）"></a>插入模式（Insert Mode）</h2><p>向文本中添加内容</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用（解释)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">i</td>
+<td align="center">插入到光标前面</td>
+</tr>
+<tr>
+<td align="center">I</td>
+<td align="center">插入到行的开始位置</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">插入到光标的后面</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">插入到行的最后位置</td>
+</tr>
+<tr>
+<td align="center">o, O</td>
+<td align="center">新开一行</td>
+</tr>
+<tr>
+<td align="center">Esc</td>
+<td align="center">关闭插入模式</td>
+</tr>
+</tbody></table>
+<h2 id="视觉模式-Visual-Mode"><a href="#视觉模式-Visual-Mode" class="headerlink" title="视觉模式 (Visual Mode)"></a>视觉模式 (Visual Mode)</h2><p>相当于高亮选取文本后的普通模式，可视模式具有子模式，以行为单位进行选取的可视行模式，使用 “V” 键进入（也就是 Shift+v ）；和以块为单位进行选取的可视块模式，使用 “Ctrl+v” 键进入。</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用（解释)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">v</td>
+<td align="center">选中一个或多个字符</td>
+</tr>
+<tr>
+<td align="center">V</td>
+<td align="center">选中行</td>
+</tr>
+<tr>
+<td align="center">ctrl+ v</td>
+<td align="center">选中列</td>
+</tr>
+</tbody></table>
+<h2 id="命令模式-Command-Mode"><a href="#命令模式-Command-Mode" class="headerlink" title="命令模式 (Command Mode)"></a>命令模式 (Command Mode)</h2><p>操作文本文件（而不是操作文本文件的内容），例如保存文件；或者用来改变编辑器本身的状态，例如设定多栏窗口、标签或者退出编辑器</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用（解释)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">:set nu</td>
+<td align="center">显示行号</td>
+</tr>
+<tr>
+<td align="center">:set nonu</td>
+<td align="center">取消显示行号</td>
+</tr>
+<tr>
+<td align="center">:set paste</td>
+<td align="center">设置粘贴模式</td>
+</tr>
+<tr>
+<td align="center">:%s/old/new/g</td>
+<td align="center">全文替换</td>
+</tr>
+<tr>
+<td align="center">:w</td>
+<td align="center">保存</td>
+</tr>
+<tr>
+<td align="center">:wq, :x</td>
+<td align="center">保存并关闭</td>
+</tr>
+<tr>
+<td align="center">:q</td>
+<td align="center">关闭（已保存）</td>
+</tr>
+<tr>
+<td align="center">:q!</td>
+<td align="center">强制关闭</td>
+</tr>
+<tr>
+<td align="center">:split</td>
+<td align="center">水平方向分割出一个窗口</td>
+</tr>
+<tr>
+<td align="center">:vsplit</td>
+<td align="center">垂直方向分割出一个窗口</td>
+</tr>
+<tr>
+<td align="center">:close</td>
+<td align="center">关闭窗口</td>
+</tr>
+<tr>
+<td align="center">ctrl+ w</td>
+<td align="center">切换窗口， h 到左边窗口，j 到下方窗口，k 到上方窗口，l 到右边窗口</td>
+</tr>
+</tbody></table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/06/行情接口pytdx用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -912,7 +1263,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
