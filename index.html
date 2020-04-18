@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/基于hexo+github搭建博客/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/行情接口pytdx用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jason Lou">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/03/基于hexo+github搭建博客/" itemprop="url">基于hexo+github搭建博客</a></h1>
+                <a class="post-title-link" href="/2020/04/18/行情接口pytdx用法/" itemprop="url">通达信行情接口pytdx用法</a></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-03T15:09:32+08:00">
-                2019-10-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-18T12:57:13+08:00">
+                2020-04-18
               </time>
             
 
@@ -299,82 +299,16 @@
 
       
         
-          
-            <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>node：<br>检查是否已安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
-
-<p>若未安装，到Node.js<a href="https://nodejs.org/" target="_blank" rel="noopener">官网</a>下载相应平台的最新版本，然后安装</p>
-<p>git：<br>检查是否已安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --version</span><br></pre></td></tr></table></figure>
-
-<p>若未安装，参考此<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000" target="_blank" rel="noopener">教程</a></p>
-<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
-
-<p>hexo官网上的安装命令是 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>创建一个目录，比如 ～/blog，进入目录，执行 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-
-<p>启动hexo服务器：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>此时，浏览器中打开网址<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>，就能看到以下页面：<br><img src="https://t1.picb.cc/uploads/2019/07/25/gr12m8.jpg" alt="hexo博客页面"></p>
-<p>至此，本地设置完毕，接下去要关联github。</p>
-<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>登陆github账号，新建repository，取名格式为 <em>用户名.github.io</em>，比如：jasonlouxy.github.io</p>
-<p>进入blog目录，vim打开_config.yml，找到deploy，并且修改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>: git</span><br><span class="line">repository: git@github.com:jasonlouxy/jasonlouxy.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-
-<p>执行生成静态网页命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<p>执行配置命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>会提示输入github用户名和密码</p>
-<p>如果此时报错：无法连接git或者找不到git，则执行 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>此时在浏览器中打开网址 jasonlouxy.github.io 能看到与打开 localhost:4000 时一样的页面。</p>
-<h2 id="添加ssh-key到github"><a href="#添加ssh-key到github" class="headerlink" title="添加ssh key到github"></a>添加ssh key到github</h2><p>在～/.ssh中检查ssh key是否存在，如果有文件id_rsa.pub或id_dsa.pub</p>
-<p>若没有，需要生成新的ssh key，执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure>
-
-<p>邮箱为github注册的邮箱地址</p>
-<p>将ssh key添加到github中：打开id_rsa.pub文件，将内容复制到github的add ssh key页面即可</p>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>可以用自己的域名来替代github的，先要查询博客的ip地址：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ping jasonlouxy.github.io</span><br></pre></td></tr></table></figure>
-
-<p>添加域名解析：</p>
-<ol>
-<li>A地址，主机记录@，记录值为查询获得的ip地址；</li>
-<li>CNAME，主机记录www，记录值为jasonlouxy.github.io</li>
-<li>进入github中博客的repository页面（jasonlouxy/jasonlouxy.github.io），选择settings，找到GitHub Pages，在Custom domain中填写自己的域名，保存后完成</li>
-</ol>
-<h2 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h2><ol>
-<li>在blog文件夹下，执行：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"postname"</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>名为postname.md的文件会建在/blog/source/_posts下</li>
-<li>文章编辑完成后，在blog文件夹下，执行：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="安装theme"><a href="#安装theme" class="headerlink" title="安装theme"></a>安装theme</h2><p>可以在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo官网主题页</a>搜索自己喜欢的theme，这里以hexo-theme-next为例：</p>
-<ol>
-<li>在blog目录下，执行：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>在_config.yml里找到theme，改成next（默认是landscape）</li>
-<li>在blog目录下，执行：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-          
+          <p><a href="https://rainx.gitbooks.io/pytdx/content/" target="_blank" rel="noopener">作者说明链接</a></p>
+<h2 id="标准行情-pytdx-hq"><a href="#标准行情-pytdx-hq" class="headerlink" title="标准行情 pytdx.hq"></a>标准行情 pytdx.hq</h2><p>引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from pytdx.hq import TdxHq_API</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/18/行情接口pytdx用法/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -421,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/HTML和CSS基础知识/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/python_while循环/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jason Lou">
@@ -440,7 +374,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/18/HTML和CSS基础知识/" itemprop="url">HTML和CSS基础知识</a></h1>
+                <a class="post-title-link" href="/2020/04/18/python_while循环/" itemprop="url">Python - while 循环</a></h1>
         
 
         <div class="post-meta">
@@ -452,8 +386,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-18T21:46:34+08:00">
-                2019-09-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-18T12:57:12+08:00">
+                2020-04-18
               </time>
             
 
@@ -491,388 +425,266 @@
 
       
         
+          <h2 id="while-循环简介"><a href="#while-循环简介" class="headerlink" title="while 循环简介"></a>while 循环简介</h2><p>for 循环用于针对集合中的每个元素都一个代码块，而while循环不断的运行，直到指定的条件不满足为止。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/18/python_while循环/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/vim常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Lou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="a flying piggie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/18/vim常用命令/" itemprop="url">vim常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-18T12:57:12+08:00">
+                2020-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-            <h2 id="Web前端技术"><a href="#Web前端技术" class="headerlink" title="Web前端技术"></a>Web前端技术</h2><ul>
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="正常模式（Normal-Mode）"><a href="#正常模式（Normal-Mode）" class="headerlink" title="正常模式（Normal Mode）"></a>正常模式（Normal Mode）</h2><p>浏览和修改文本内容，一般的，打开 Vim 都是正常模式。在任何模式下，只要按下 Esc 键就可以返回正常模式。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/18/vim常用命令/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/HTML和CSS基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Lou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="a flying piggie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/18/HTML和CSS基础知识/" itemprop="url">HTML和CSS基础知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-18T12:57:11+08:00">
+                2020-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Web前端技术"><a href="#Web前端技术" class="headerlink" title="Web前端技术"></a>Web前端技术</h2><ul>
 <li>HTML 结构标准：负责页面内容。</li>
 <li>CSS  样式标准/表现标准：负责页面美化。</li>
 <li>js   行为标准：负责网页行为动作、表单验证、数据交互。</li>
 </ul>
-<h3 id="html"><a href="#html" class="headerlink" title="html"></a>html</h3><p>超文本（带符号的文本）标记语言。</p>
-<h3 id="html-发展历史"><a href="#html-发展历史" class="headerlink" title="html 发展历史"></a>html 发展历史</h3><ul>
-<li>html-1.0 —1993年起草了一个草案，纯文本格式，灵感来源于报纸。</li>
-<li>html-2.0 — 没有发生太大的改动。</li>
-<li>html-3.0 — 没有发生太大的改动。</li>
-<li>html-4.0 — 意识到之前的版本问题：语法松散 Aa(大小写不统一)。</li>
-<li>后来就出现了—xhtml-1.0(严格型的 html-相对严格：兼容之前的版本)。</li>
-<li>html-5.0 — 是由浏览器厂商提出的构想，最终w3c研发。</li>
-</ul>
-<h3 id="html-标记语法"><a href="#html-标记语法" class="headerlink" title="html 标记语法"></a>html 标记语法</h3><ul>
-<li>&lt;标记名字&gt;&lt;/标记名字&gt; — 双标记</li>
-<li>&lt;标记名字&gt; — 单标记</li>
-</ul>
-<h3 id="默认代码作用"><a href="#默认代码作用" class="headerlink" title="默认代码作用"></a>默认代码作用</h3><ul>
-<li>html — 作用：表示整个网页文档。</li>
-<li>head — 网页头部 作用：存放所有需要浏览器渲染的代码、css、js。</li>
-<li>body — 网页主题 作用：存放所有给用户看的信息。</li>
-<li>title — 网页标题。</li>
-<li>&lt; DOCTYPE html&gt;：文档声明，规定文档DTD格式：规定好所有浏览器都取一个html版本解决接下来的所有代码 — 为了解决兼容性。</li>
-<li>&lt; mate&gt; 标签基本上是给seo：搜索引擎优化用的。</li>
-</ul>
-<h3 id="常用的布局标签"><a href="#常用的布局标签" class="headerlink" title="常用的布局标签"></a>常用的布局标签</h3><h4 id="html属性："><a href="#html属性：" class="headerlink" title="html属性："></a>html属性：</h4><p>html属性：键值对规则 k=“v” 一个标签可以写多个键值对，用空格隔开</p>
-<h4 id="常用标签："><a href="#常用标签：" class="headerlink" title="常用标签："></a>常用标签：</h4><ul>
-<li>&lt; h1 &gt;  标题</li>
-<li>&lt; p &gt;   段落</li>
-<li>&lt; div &gt; 布局常用的标签：划分模块划分区域的地方都是布局 – 都用div标签：里面可以放任何内容任何标</li>
-</ul>
-<h4 id="以下标签不自动换行："><a href="#以下标签不自动换行：" class="headerlink" title="以下标签不自动换行："></a>以下标签不自动换行：</h4><ul>
-<li>&lt; span &gt; span不字段换行，放一些小的图标，存放特殊的效果文字</li>
-<li>&lt; b &gt; 字体加粗</li>
-<li>&lt; i &gt; 字体倾斜</li>
-<li>&lt; u &gt; 字体添加下划线</li>
-<li>&lt; s &gt; 删除线</li>
-</ul>
-<h4 id="强调语气的标签-—搜索引擎优先抓取这种带有强调语义标签的内容："><a href="#强调语气的标签-—搜索引擎优先抓取这种带有强调语义标签的内容：" class="headerlink" title="强调语气的标签 —搜索引擎优先抓取这种带有强调语义标签的内容："></a>强调语气的标签 —搜索引擎优先抓取这种带有强调语义标签的内容：</h4><ul>
-<li>&lt; strong &gt; 加粗带有强调语义</li>
-<li>&lt; em &gt; 倾斜带有强调语义</li>
-<li>&lt; ins &gt; 下划线带有强调语义</li>
-<li>&lt; del &gt; 删除线带有强调语义</li>
-</ul>
-<p>####图片标签：<br>&lt; img src=“icon.jpg” alt=“替换文本，图片无法显示的时候显示的文字” title=“提示文本”&gt;</p>
-<ul>
-<li>src：放在项目中保存图片的路径</li>
-<li>alt：1、替换文本；2、支持盲人读屏软件</li>
-<li>title：1、提示信息；2、seo放搜索关键字</li>
-</ul>
-<h4 id="超链接标签："><a href="#超链接标签：" class="headerlink" title="超链接标签："></a>超链接标签：</h4><p>&lt; a href=“在本地项目目录中存储的文件.html” target=”_blank” &gt;跳转到本地文件</p>
-<ul>
-<li>target=”_blank” 新窗口打开页面</li>
-<li>href=’#’ 不知道跳转地址，假连接</li>
-</ul>
-<h4 id="在html标签中写尺寸不需要加px-像素-："><a href="#在html标签中写尺寸不需要加px-像素-：" class="headerlink" title="在html标签中写尺寸不需要加px(像素)："></a>在html标签中写尺寸不需要加px(像素)：</h4><ul>
-<li>比如：border = “1”</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 标题标签  标记 == 标签  共6级 h1 -- h6 --&gt;</span><br><span class="line">&lt;!-- 经验： 一个网页只能出现一次h1，h1是主标题，这个h1用来放网页的logo --&gt;</span><br><span class="line">    &lt;h1&gt;h1标题&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;h2标题&lt;/h2&gt;</span><br><span class="line">    &lt;h3&gt;h3标题&lt;/h3&gt;</span><br><span class="line">    &lt;h4&gt;h4标题&lt;/h4&gt;</span><br><span class="line">    &lt;h5&gt;h5&lt;/h5&gt;</span><br><span class="line">    &lt;h6&gt;h6&lt;/h6&gt;</span><br><span class="line"></span><br><span class="line">    &lt;p&gt;段落&lt;/p&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;div&gt;布局常用的标签：划分模块划分区域的地方都是布局 -- 都用div标签：里面可以放任何内容任何标&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- span作用：存放特殊效果的文字、小图片  这个标签不自动换行--&gt;</span><br><span class="line">    &lt;span&gt;span&lt;/span&gt;</span><br><span class="line">    &lt;span&gt;span&lt;/span&gt;</span><br><span class="line">	</span><br><span class="line">    &lt;!-- 这些标签不自动换行 --&gt;</span><br><span class="line">	&lt;b&gt;加粗&lt;/b&gt;</span><br><span class="line">    &lt;i&gt;倾斜&lt;/i&gt;</span><br><span class="line">    &lt;u&gt;下划线&lt;/u&gt;</span><br><span class="line">    &lt;s&gt;删除线&lt;/s&gt;</span><br><span class="line">    &lt;!-- 所有标签都自带语义 --&gt;</span><br><span class="line">    &lt;!-- 带有强调语义  搜索引擎优先抓取这种带有强调语义标签的内容 --&gt;</span><br><span class="line">    &lt;strong&gt;加粗带有强调语义&lt;/strong&gt;</span><br><span class="line">    &lt;em&gt;倾斜带有强调语义&lt;/em&gt;</span><br><span class="line">    &lt;ins&gt;下划线带有强调语义&lt;/ins&gt;</span><br><span class="line">    &lt;del&gt;删除线带有强调语义&lt;/del&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- html属性 键值对规则 k=&quot;v&quot; 一个标签可以写多个键值对，用空格隔开 --&gt;</span><br><span class="line">	&lt;!-- src：放在项目中保存图片的路径 --&gt;</span><br><span class="line">    &lt;!-- alt：1、替换文本；2、支持盲人读屏软件 --&gt;</span><br><span class="line">    &lt;!-- title：1、提示信息；2、seo放搜索关键字 --&gt;</span><br><span class="line">    &lt;img src=&quot;icon.jpg&quot; alt=&quot;替换文本，图片无法显示的时候显示的文字&quot; title=&quot;提示文本&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 超链接标签的作用 --&gt;</span><br><span class="line">	&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度&lt;/a&gt;</span><br><span class="line">    &lt;a href=&quot;在本地项目目录中存储的文件.html&quot;&gt;跳转到本地文件&lt;/a&gt;</span><br><span class="line">    &lt;a href=&quot;#&quot;&gt;不知道跳转地址 假链接&lt;/a&gt;</span><br><span class="line">    &lt;!-- target=&quot;_blank&quot; 新窗口打开页面 --&gt;</span><br><span class="line">    &lt;a href=&quot;http://www.taobao.com&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;1.jpg&quot; alt=&quot;图片无法显示的img&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="CSS-嵌入式写法"><a href="#CSS-嵌入式写法" class="headerlink" title="CSS 嵌入式写法"></a>CSS 嵌入式写法</h3><h4 id="lt-style-gt-标签的作用："><a href="#lt-style-gt-标签的作用：" class="headerlink" title="&lt; style &gt;标签的作用："></a>&lt; style &gt;标签的作用：</h4><p>&lt; style type=“text/css” &gt; 写css样式的标签</p>
-<ul>
-<li>格式：纯文本的css</li>
-<li>type: 属性可有可无</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    /* 格式：纯文本的css  type属性可有可无 */</span><br><span class="line">    /* logo文字变红色  -- h1的文字颜色是红色  */</span><br><span class="line">    h1&#123;</span><br><span class="line">        /* css键值对 k:v; */</span><br><span class="line">        color:red;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!--  --&gt;</span><br><span class="line">    &lt;h1&gt;fe_cow嵌入式测试&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="CSS-外链式写法"><a href="#CSS-外链式写法" class="headerlink" title="CSS 外链式写法"></a>CSS 外链式写法</h3><ul>
-<li>创建一个.css的文件，将css的样式写入里面，然后在html 通过&lt; link &gt;把.css文件导入到html中。</li>
-<li>简单的解释就是html和css分开单独文件存放。</li>
-</ul>
-<h4 id="外链式的-lt-meta-gt-标签和-lt-link-gt-标签："><a href="#外链式的-lt-meta-gt-标签和-lt-link-gt-标签：" class="headerlink" title="外链式的&lt; meta &gt;标签和&lt; link &gt;标签："></a>外链式的&lt; meta &gt;标签和&lt; link &gt;标签：</h4><ul>
-<li>&lt; meta &gt;标签大多数都是seo在做搜索引擎需要的多一些</li>
-<li>&lt; link rel=“stylesheet” href=“mycss.css” &gt; :<ul>
-<li>href 写css文件在本地的地址</li>
-<li>rel:html和css文件的关系：stylesheet 样式表、样式单</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;mycss.css&quot;&gt;</span><br><span class="line">    &lt;!-- href 写css文件在本地的地址 --&gt;</span><br><span class="line">    &lt;!-- rel:html和css文件的关系：stylesheet 样式表、样式单 --&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- html和css分开单独文件存放 --&gt;</span><br><span class="line">    &lt;div&gt;fe_cow外链式测试&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="CSS-行内式写法"><a href="#CSS-行内式写法" class="headerlink" title="CSS 行内式写法"></a>CSS 行内式写法</h3><ul>
-<li>将css属性 直接写入&lt; 标签中 style=‘xx:xx’ &gt;这个写法不好，会出现重复代码，而且易读性较差。加载速度慢。</li>
-<li>css键值对中允许一个k对应多个v，各个值之间用空格隔开。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 标签身上加style=“css键值对” html属性 --&gt;</span><br><span class="line">    &lt;p style=&quot;color:blue;&quot;&gt;fe_cow行内式&lt;/p&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- 嵌入式：提高加载速度 --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用文字控制属性（写在CSS的式样里面）"><a href="#常用文字控制属性（写在CSS的式样里面）" class="headerlink" title="常用文字控制属性（写在CSS的式样里面）"></a>常用文字控制属性（写在CSS的式样里面）</h3><ul>
-<li>P{} ：<ul>
-<li>p就是代表标签名，这里指的是p标签</li>
-<li>{} 里面写css的代码</li>
-</ul>
-</li>
-<li>字号大小：<ul>
-<li>font-size: 30px;</li>
-<li>px是像素 css尺寸必须带单位</li>
-</ul>
-</li>
-<li>字体类型（中文得加””双引号）：font-family: “宋体”</li>
-<li>字体是否加粗：font-weight: bold;</li>
-<li>取消字体的加粗状态：font-weight: normal;</li>
-<li>字体是否倾斜：font-style: italic;</li>
-<li>取消字体的倾斜状态：font-style: normal;</li>
-<li>文字修饰线：text-decoration: underline;</li>
-<li>行间距、行高：line-height: 100px;</li>
-<li>首行缩进：text-indent: 2em;</li>
-<li>取消超链接字体下面的_横线：text-decoration: none;</li>
-<li>给超文本字体加删除线：text-decoration: line-through</li>
-<li>给一个标签框描边：<ul>
-<li>border: red 1px solid </li>
-<li>border: 颜色 粗细 线段种类（值不分顺序）</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    p&#123;</span><br><span class="line">        color: blue;</span><br><span class="line">        /* px是像素 css尺寸必须带单位 */</span><br><span class="line">        /* 字号大小 */</span><br><span class="line">        font-size: 30px;</span><br><span class="line">        /* 字体类型（中文得加&quot;&quot;双引号） */</span><br><span class="line">        font-family: &quot;宋体&quot;;</span><br><span class="line">        /* 字体是否加粗 */</span><br><span class="line">        font-weight: bold;</span><br><span class="line">        /* 字体是否倾斜 */</span><br><span class="line">        font-style: italic;</span><br><span class="line">        /* 文字修饰线 */</span><br><span class="line">        text-decoration: underline;</span><br><span class="line">        /* 行间距  行高 */</span><br><span class="line">        line-height: 100px;</span><br><span class="line">        /* em 一个字的大小 */</span><br><span class="line">        /* 首行缩进 */</span><br><span class="line">        text-indent: 2em;</span><br><span class="line">    &#125;</span><br><span class="line">    b&#123;</span><br><span class="line">        /* 取消字体的加粗状态 */</span><br><span class="line">        font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    i&#123;</span><br><span class="line">        /* 取消字体的倾斜状态 */</span><br><span class="line">        font-style: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    a&#123;</span><br><span class="line">        /* 取消超链接字体下面的_横线 */</span><br><span class="line">        text-decoration: none;</span><br><span class="line">        /* 给超文本字体加删除线 */</span><br><span class="line">        /* text-decoration: line-through; */</span><br><span class="line">        /* 给超文本字体上面添加横线 一般用不到 */</span><br><span class="line">        /* text-decoration: overline; */</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;fe_cow 希望大家多多关注我哦，我会每天都更新的。热爱技术，学无止境！&lt;/p&gt;</span><br><span class="line">    &lt;b&gt;加粗&lt;/b&gt;</span><br><span class="line">    &lt;i&gt;倾斜&lt;/i&gt;</span><br><span class="line">    &lt;a href=&quot;#&quot;&gt;超链接&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="基础布局属性"><a href="#基础布局属性" class="headerlink" title="基础布局属性"></a>基础布局属性</h3><ul>
-<li>设置宽度：width: 300px;</li>
-<li>设置高度：height: 200px;</li>
-<li>设置背景颜色：background: green;</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: green;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p>以点开头，后面紧跟类选择器的名字,名字自定义，满足规则：不要用特殊符号，不能数字开头，然后跟大括号写键值对。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    /* 类选择器：定义  使用 */</span><br><span class="line">    /* 定义：以点开头，后面紧跟类选择器的名字,名字自定义，满足规则：不要用特殊符号，不能数字开头，然后跟大括号写键值对 */</span><br><span class="line">    /* 使用：在标签身上添加html属性  class=“类选择器的名字” */</span><br><span class="line">    .app&#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;div&gt;Au_cow&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;app&quot;&gt;Ag_cow&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;Cu_cow&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;app&quot;&gt;Fe_cow&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;Al_cow&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><ul>
-<li>定义id ：要求#开头，后面紧跟名字</li>
-<li>id要求：一个页面同一个id名只能使用一次：前端不用id选择器写css，用id选择器做数据交互。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    /* div&#123;&#125; */</span><br><span class="line">    /* 定义id ：要求#开头，后面紧跟名字 */</span><br><span class="line">    /* id要求：一个页面同一个id名只能使用一次：前端不用id选择器写css，用id选择器做数据交互 */</span><br><span class="line">    #red&#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;div&gt;au_cow&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;red&quot;&gt;ag_cow&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;red&quot;&gt;fe_cow&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h3><ul>
-<li>重点：父子{} – 有空格的就是层级选择器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    /* li&#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125; */</span><br><span class="line">    /* 重点*** ： 父  子&#123;&#125; -- 有空格的就是层级选择器 */</span><br><span class="line">    /* ul li&#123;</span><br><span class="line">        color: red</span><br><span class="line">    &#125; */</span><br><span class="line">    .box .aa&#123;</span><br><span class="line">        color: green;</span><br><span class="line">    &#125;</span><br><span class="line">    div .bb&#123;</span><br><span class="line">        color: blue;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul class=&quot;box&quot;&gt;</span><br><span class="line">        &lt;li class=&quot;aa&quot;&gt;ul li&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;ol&gt;</span><br><span class="line">        &lt;li&gt;ol li&lt;/li&gt;</span><br><span class="line">    &lt;/ol&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="组选择器"><a href="#组选择器" class="headerlink" title="组选择器"></a>组选择器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    /* body&#123;&#125; */</span><br><span class="line">    /* *&#123;&#125; */</span><br><span class="line">    /* *** 组选择器符号 逗号 */</span><br><span class="line">    div,h1,span,p&#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;div&lt;/div&gt;</span><br><span class="line">    &lt;h1&gt;h1&lt;/h1&gt;</span><br><span class="line">    &lt;span&gt;span&lt;/span&gt;</span><br><span class="line">    &lt;p&gt;ppppp&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><ul>
-<li>伪类表示的是状态，所有伪类选择器都是冒号开头 后面紧跟一个w3c定义好的表示状态的单词。</li>
-<li>伪类一共有4个：<ul>
-<li>a代表的是&lt; a &gt;标签</li>
-<li>点击前的颜色：a:link{color: red;}</li>
-<li>点击后的颜色：a:visited{color: green;}</li>
-<li>鼠标滑过的颜色：a:hover{color: blue;}</li>
-<li>鼠标点住不放的颜色：a:active{color: yellow;}</li>
-</ul>
-</li>
-<li>以上4种都不是很常见，常见的如下栗子：<ul>
-<li>点击前默认的颜色：a{color:red;}</li>
-<li>鼠标滑过的颜色：a:hover{color: blue;}</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    /* a的伪类一共有4个 */</span><br><span class="line">    /* a:link&#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line">    a:visited&#123;</span><br><span class="line">        color: green;</span><br><span class="line">    &#125;</span><br><span class="line">    a:hover&#123;</span><br><span class="line">        color: blue;</span><br><span class="line">    &#125;</span><br><span class="line">    a:active&#123;</span><br><span class="line">        color: yellow;</span><br><span class="line">    &#125; */</span><br><span class="line">    a&#123; color:red;&#125;</span><br><span class="line">    a:hover&#123;</span><br><span class="line">        color: blue;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 伪类表示的是状态，所有伪类选择器都是冒号开头 后面紧跟一个w3c定义好的表示状态的单词 --&gt;</span><br><span class="line">    &lt;a href=&quot;#&quot;&gt;于键&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="选择器权重"><a href="#选择器权重" class="headerlink" title="选择器权重"></a>选择器权重</h3><ul>
-<li>标签选择器 &lt; 类选择器 &lt; id选择器</li>
-<li>外链式和嵌入式谁在下谁生效&lt;行内式</li>
-<li>想让一个css样式权重最大的话，就在css样式里面，加!important 提权功能，提高权重到最高</li>
-</ul>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><ul>
-<li>无序列表、有序列表、自定义列表</li>
-<li>去掉ul(无序列表)标签中每个li前面的点:list-style: none;</li>
-<li>去掉ol(有序列表)标签中每个li前面的序号：list-style: none;</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    ul&#123;</span><br><span class="line">        /* 去掉每个li前面的点 */</span><br><span class="line">        list-style: none;</span><br><span class="line">    &#125;</span><br><span class="line">    ol&#123;</span><br><span class="line">        /* 去掉每个li前面的序号 */</span><br><span class="line">        list-style:none;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- **** 无序列表 结构：ul嵌套（包含）li，ul表示无序列表整体，li是列表的某一项 --&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;fe_cow_01&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;fe_cow_02&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;fe_cow_03&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;!-- **** 有序列表 结构：ol嵌套（包含）li，ul表示无序列表整体，li是列表的某一项 --&gt;</span><br><span class="line">    &lt;ol&gt;</span><br><span class="line">        &lt;li&gt;fe_cow_01&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;fe_cow_02&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;fe_cow_03&lt;/li&gt;</span><br><span class="line">    &lt;/ol&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- 项目列表/自定义列表：dl嵌套dt和dd，dl是自定义列表整体，dt是列表的标题，dd是列表的描述  --&gt;</span><br><span class="line">    &lt;dl&gt;</span><br><span class="line">        &lt;dt&gt;列表标题&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;描述文字................&lt;/dd&gt;</span><br><span class="line">    &lt;/dl&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><ul>
-<li>国内2005年互联网网站大量改变从表格(浏览器加载完所有表格才显示页面效果)，布局改成div+css浏览器读取一行代码显示一行代码的效果。</li>
-<li>&lt; table &gt;标签：table嵌套tr，tr嵌套td，table是整个表格，tr是行，td是单元格</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    table&#123;</span><br><span class="line">        /* font-size: 30px;  k:v;</span><br><span class="line">        width: 500px; */</span><br><span class="line">        /* css键值对中允许一个k对应多个v，各个值之间用空格隔开 */</span><br><span class="line">        /* border:颜色  粗细  线段种类;  -- 值不分顺序 */</span><br><span class="line">        border: red 1px solid;</span><br><span class="line">        /* 合并边框线 -- 单线表格 */</span><br><span class="line">        /* border-collapse: collapse; */</span><br><span class="line">    &#125;</span><br><span class="line">    td&#123;</span><br><span class="line">        border: 1px red solid;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- ******* 结构：table嵌套tr，tr嵌套td，table是整个表格，tr是行，td是单元格 --&gt;</span><br><span class="line">    &lt;!-- th  表头 --&gt;</span><br><span class="line">    &lt;!-- html写尺寸不加单位  border=&quot;1&quot; --&gt;</span><br><span class="line">    &lt;!-- cellpadding：来开内容和td边缘的距离  cellspacing：拉开td之间的距离 --&gt;</span><br><span class="line">    &lt;table cellpadding=&quot;30&quot; cellspacing=&quot;50&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;!-- colspan 横向和格子 --&gt;</span><br><span class="line">            &lt;th colspan=&quot;2&quot;&gt;1&lt;/th&gt;</span><br><span class="line">            &lt;!-- &lt;td&gt;2&lt;/td&gt; --&gt;</span><br><span class="line">            &lt;th&gt;3&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">            &lt;!-- rowspan 竖向和格子 --&gt;</span><br><span class="line">            &lt;td rowspan=&quot;2&quot;&gt;2&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">            &lt;!-- &lt;td&gt;2&lt;/td&gt; --&gt;</span><br><span class="line">            &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><ul>
-<li>应用场景：注册、登入、搜索</li>
-<li>form表单标签：收集数据（写发送地址: 表单域）：&lt; form action=“提交地址” method=“post”&gt;</li>
-<li>文本框：<ul>
-<li>&lt; input type=“text” value=“请输入用户名” placeholder=‘’ &gt;</li>
-<li>placeholder html5.0新增</li>
-</ul>
-</li>
-<li>密码框：&lt; input type=“password” &gt;</li>
-<li>单选框：&lt; input type=“radio” name=“sex” id=“nan”&gt;&lt; label for=“nan”&gt;男 &lt; input type=“radio” name=“sex” id=“nv” checked&gt; &lt; label for=“nv”&gt;女<ul>
-<li>实现单选功能：添加name=“”，且取值相同</li>
-<li>扩大触发区域：文字添加&lt; label &gt;标签，保证label标签的for属性和input标签的id属性取值完全相同</li>
-<li>默认选中： checked=”checked”</li>
-<li>html5.0，如果k和v的值相等，可以省略只保留一个单词</li>
-</ul>
-</li>
-<li>复选框/多选：&lt; input type=“checkbox”&gt;读书 &lt; input type=“checkbox”&gt;旅游 &lt; input type=“checkbox” checked&gt;lol</li>
-<li>上传文件：&lt; input type=“file” &gt;</li>
-<li>下拉菜单：<br>  &lt; select&gt;<pre><code>&lt; option&gt;中国台湾
-&lt; option selected=“selected”&gt;中国香港
-&lt; option value=&quot;&quot;&gt;中国澳门</code></pre>  &lt; /select&gt;<ul>
-<li>默认选中：selected=”selected”</li>
-</ul>
-</li>
-<li>文本域：<ul>
-<li>&lt; textarea &gt;&lt; /textarea&gt;</li>
-<li>css样式：<ul>
-<li>禁止任意拖拽：resize: none;</li>
-<li>去掉焦点框：outline: none;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>提交按钮：&lt; input type=“submit” value=“注册” &gt;</li>
-<li>普通按钮：&lt; input type=“button” value=“普通按钮” &gt;</li>
-<li>重置按钮：&lt; input type=“reset” &gt;</li>
-<li>按钮：&lt; button &gt;普通按钮</li>
-<li>换行标签：&lt; br &gt;</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    textarea&#123;</span><br><span class="line">        /* 禁止任意拖拽 */</span><br><span class="line">        resize: none;</span><br><span class="line">        width: 500px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        /* 去掉焦点框 */</span><br><span class="line">        outline: none;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- form表单标签：收集数据写发送地址: 表单域 --&gt;</span><br><span class="line">    &lt;!-- 支持用户输入的都得继续写功能性的标签：表单控件 --&gt;</span><br><span class="line">    &lt;form action=&quot;提交地址&quot; method=&quot;post&quot;&gt;</span><br><span class="line">        &lt;!-- placeholder html5.0新增 --&gt;</span><br><span class="line">        文本框：&lt;input type=&quot;text&quot; value=&quot;请输入用户名&quot;&gt;</span><br><span class="line">        &lt;br&gt;&lt;br&gt;</span><br><span class="line">        密码框：&lt;input type=&quot;password&quot;&gt;</span><br><span class="line">        &lt;br&gt;&lt;br&gt;</span><br><span class="line">        单选框：&lt;input type=&quot;radio&quot; name=&quot;sex&quot; id=&quot;nan&quot;&gt;&lt;label for=&quot;nan&quot;&gt;男&lt;/label&gt;  &lt;input type=&quot;radio&quot; name=&quot;sex&quot; id=&quot;nv&quot; checked&gt; &lt;label for=&quot;nan&quot;&gt;女&lt;/label&gt;</span><br><span class="line">        &lt;!-- </span><br><span class="line">            1、实现单选功能：添加name=“”，且取值相同</span><br><span class="line">            2、扩大触发区域：文字添加label标签，保证label标签的for属性和input标签的id属性取值完全相同</span><br><span class="line">            3、默认选中： checked=&quot;checked&quot;；</span><br><span class="line">                html5.0，如果k和v的值相等，可以省略只保留一个单词</span><br><span class="line">         --&gt;</span><br><span class="line">         &lt;br&gt;&lt;br&gt;</span><br><span class="line">         复选框/多选: &lt;input type=&quot;checkbox&quot;&gt;读书  &lt;input type=&quot;checkbox&quot;&gt;旅游 &lt;input type=&quot;checkbox&quot; checked&gt;lol</span><br><span class="line">         &lt;br&gt;&lt;br&gt;</span><br><span class="line">         上传文件：&lt;input type=&quot;file&quot;&gt;</span><br><span class="line">         &lt;br&gt;&lt;br&gt;</span><br><span class="line">         下拉菜单：</span><br><span class="line">         &lt;select&gt;</span><br><span class="line">             &lt;option&gt;中国台湾&lt;/option&gt;</span><br><span class="line">             &lt;option selected=&quot;selected&quot;&gt;中国香港&lt;/option&gt;</span><br><span class="line">             &lt;option value=&quot;&quot;&gt;中国澳门&lt;/option&gt;</span><br><span class="line">         &lt;/select&gt;</span><br><span class="line">         &lt;br&gt;&lt;br&gt;</span><br><span class="line">         文本域: &lt;textarea&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">         &lt;!-- submit 研发的时候就已经封装了提交功能 --&gt;</span><br><span class="line">         &lt;input type=&quot;submit&quot; value=&quot;注册&quot;&gt;</span><br><span class="line">         &lt;input type=&quot;button&quot; value=&quot;普通按钮&quot;&gt;</span><br><span class="line">         &lt;input type=&quot;reset&quot;&gt;</span><br><span class="line">         &lt;button&gt;普通按钮&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">     </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h3><ul>
-<li>背景颜色：<ul>
-<li>background: #ccc;</li>
-<li>#… 十六进制颜色色值 从ps软件里面查看</li>
-</ul>
-</li>
-<li>描边：<ul>
-<li>border: 1px solid black;</li>
-</ul>
-</li>
-<li>内边距:拉开内容和盒子边缘之间的距离：<ul>
-<li>padding:20px;</li>
-<li>盒子实际尺寸公式：width/height值 + padding + border */</li>
-</ul>
-</li>
-<li>启动盒子的内减模式 css3.0新增<ul>
-<li>box-sizing: border-box;</li>
-</ul>
-</li>
-<li>外边距：拉开盒子之间的距离<ul>
-<li>margin: 50px;</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        div&#123;</span><br><span class="line">            width: 300px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            /* #.... 十六进制颜色色值 从ps软件里面查看 */</span><br><span class="line">            background: #ccc;</span><br><span class="line">            border: 1px solid black;</span><br><span class="line">            /* 内边距:拉开内容和盒子边缘之间的距离 */</span><br><span class="line">            /* 盒子实际尺寸公式：width/height值 + padding + border */</span><br><span class="line">            padding:20px;</span><br><span class="line">            /* css2.0   和  css3.0 */</span><br><span class="line">            /* 启动盒子的内减模式  css3.0新增 */</span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">            /* 外边距：拉开盒子之间的距离 */</span><br><span class="line">            margin: 50px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- ***** 盒子模型：布局  -- 比喻手法  标签比喻盒子 --&gt;</span><br><span class="line">    &lt;div&gt;女装&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="文字水平垂直居中"><a href="#文字水平垂直居中" class="headerlink" title="文字水平垂直居中"></a>文字水平垂直居中</h3><ul>
-<li>水平居中：text-align: left center right;<ul>
-<li>文字在左：left</li>
-<li>文字居中: center</li>
-<li>文字在右：right</li>
-</ul>
-</li>
-<li>垂直居中：line-height: 200px; 设置行高属性的值等于自身高度属性的值（跟height高度相等）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: #ccc;</span><br><span class="line">        /* text-align: left center right; */</span><br><span class="line">        text-align: center;</span><br><span class="line">        /* 经验：设置行高属性的值等于自身高度属性的值 */</span><br><span class="line">        line-height: 200px;</span><br><span class="line">    &#125;</span><br><span class="line">    p&#123;</span><br><span class="line">        line-height: 100px;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;内容&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;p&gt;内容内容内容内容内容&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="border属性的详解"><a href="#border属性的详解" class="headerlink" title="border属性的详解"></a>border属性的详解</h3><ul>
-<li>left right top bottom 代表的左右上下：border-left(right、top、bottom)</li>
-<li>实线 solid：border-top: 1px solid red;</li>
-<li>虚线 dashed：border-bottom: 10px dashed green;</li>
-<li>点线 dotted：border-right: 5px blue dotted;</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: #ccc;</span><br><span class="line">    &#125;</span><br><span class="line">    .box1&#123;</span><br><span class="line">        /* left   right  top  bottom */</span><br><span class="line">        border-top: 1px solid red;</span><br><span class="line">        /* dashed 虚线 */</span><br><span class="line">        border-bottom: 10px dashed green;</span><br><span class="line">        /* dotted 点线 */</span><br><span class="line">        border-right: 5px blue dotted;</span><br><span class="line">    &#125;</span><br><span class="line">    /* margin和padding的设置方法和含义完全相同 */</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;box1&quot;&gt;box&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="padding属性详解"><a href="#padding属性详解" class="headerlink" title="padding属性详解"></a>padding属性详解</h3><ul>
-<li>padding 一个k连接多个v ：语法v之间用空格隔开</li>
-<li>一个k连接多个v：<ul>
-<li>四值（上 右 下 左 从上顺时针一圈）：padding: 10px 20px 40px 80px;</li>
-<li>三值（上 左右 下）：padding: 10px 40px 80px;</li>
-<li>两值（上下 左右）：padding: 10px 80px;</li>
-</ul>
-</li>
-<li>margin和padding的设置方法和含义完全相同</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: #ccc;</span><br><span class="line">    &#125;</span><br><span class="line">    .box2&#123;</span><br><span class="line">        padding-top: 10px;</span><br><span class="line">        padding-right: 20px;</span><br><span class="line">        padding-bottom: 40px;</span><br><span class="line">        padding-left: 80px;</span><br><span class="line">    &#125;</span><br><span class="line">    /* padding 一个k连接多个v ：语法v之间用空格隔开 */</span><br><span class="line">    .box3&#123;</span><br><span class="line">        /* 一个k连接多个v */</span><br><span class="line">        /* 四值：上  右  下  左  从上顺时针一圈 */</span><br><span class="line">        /* padding: 10px 20px 40px 80px; */</span><br><span class="line">        /* 三值：上  左右  下 */</span><br><span class="line">        /* padding: 10px 40px 80px; */</span><br><span class="line">        /* 两值：上下  左右 */</span><br><span class="line">        padding: 10px 80px;</span><br><span class="line">    &#125;</span><br><span class="line">    /* margin和padding的设置方法和含义完全相同 */</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;br&gt;&lt;br&gt;</span><br><span class="line">    &lt;div class=&quot;box2&quot;&gt;box&lt;/div&gt;</span><br><span class="line">    &lt;br&gt;&lt;br&gt;</span><br><span class="line">    &lt;div class=&quot;box3&quot;&gt;box&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="版心居中"><a href="#版心居中" class="headerlink" title="版心居中"></a>版心居中</h3><ul>
-<li>版心：网页有限内容的标签，其实div比较普遍一些</li>
-<li>margin:0 auto;<br>  +auto 根据不同的浏览器，或者分配率来说，自动的设置左右的宽度。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        width: 1000px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: #ccc;</span><br><span class="line">        /* margin: 上下无所谓 左右一样重点; */</span><br><span class="line">        margin:0 auto;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 版心：网页有效内容的标签 -- div --&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="控制标签的显示和隐藏"><a href="#控制标签的显示和隐藏" class="headerlink" title="控制标签的显示和隐藏"></a>控制标签的显示和隐藏</h3><ul>
-<li>隐藏 不占位：display:none</li>
-<li>取消隐藏：display: block</li>
-<li>隐藏 占位：visibility: hidden</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        background: green;</span><br><span class="line">        /* ******* display:none 隐藏:不占位 */</span><br><span class="line">        /* display: block; */</span><br><span class="line">        /* display: none; */</span><br><span class="line">        /* 占位 */</span><br><span class="line">        /* visibility: hidden; */</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;p&gt;fe_cow&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="溢出overflow"><a href="#溢出overflow" class="headerlink" title="溢出overflow"></a>溢出overflow</h3><ul>
-<li>overflow：解决内容超出父级如何显示的问题</li>
-<li>溢出默认值：overflow: visible</li>
-<li>超出隐藏：overflow: hidden</li>
-<li>auto（自动、超出加滚动条）：overflow: auto;</li>
-<li>scroll（滚动，不管内容是否超出都有滚动条的位置）：overflow: scroll</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        background: #ccc;</span><br><span class="line">        /* overflow:解决内容超出父级如何显示的问题 */</span><br><span class="line">        /* overflow:visible; 默认值 */</span><br><span class="line">        /* ***** overflow: hidden; 超出隐藏 */</span><br><span class="line">        /*  ***** auto：自动：超出加滚动条 */</span><br><span class="line">        overflow: auto;</span><br><span class="line">        /* scroll：滚动，不管内容是否超出都有滚动条的位置 */</span><br><span class="line">        /* overflow: scroll; */</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;fe_cow_fe_cow_fe_cow_fe_cow_fe_cow&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="标准流"><a href="#标准流" class="headerlink" title="标准流"></a>标准流</h3><ul>
-<li>浮动跟定位都是脱离标准流</li>
-<li>浮动<ul>
-<li>浮动作用：让换行的标签在一行显示</li>
-<li>让哪些标签一行显示，那么所有标签都要加float属性; 只要浮动标签都顶对齐</li>
-<li>取消浮动：float: none</li>
-<li>浮动左对齐：float: left</li>
-<li>浮动右对齐：float: right</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    .box1&#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">        float: right;</span><br><span class="line">    &#125;    </span><br><span class="line">    .box2&#123;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: green;</span><br><span class="line">        float: right;</span><br><span class="line">    &#125;</span><br><span class="line">    .box3&#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        background: blue;</span><br><span class="line">        float: right;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 浮动作用：让换行的标签在一行显示 --&gt;</span><br><span class="line">    &lt;!-- float:none  left:所有标签左对齐  right：所有标签右对齐   --&gt;</span><br><span class="line">    &lt;!-- 使用浮动的注意点：让哪些标签一行显示，那么所有标签都要加float属性; 只要浮动标签都顶对齐 --&gt;</span><br><span class="line">    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;box3&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><ul>
-<li>定位作用：让标签叠加显示</li>
-<li>相对定位：position: relative;<ul>
-<li>特点：<ul>
-<li>不改变换行标签的特点：宽度和父级一样大</li>
-<li>改变位置的参照物是自己</li>
-<li>占位脱离标准流</li>
-</ul>
-</li>
-<li>所有定位形式想要改变位置，都需要配合偏移量属性k:v;</li>
-<li>方向英文单词：left top right bottom</li>
-<li>下面需要给偏移量属性<ul>
-<li>left:200px;</li>
-<li>top: 300px;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        /*所有默认换行的标签，不加width属性，宽度和父级宽度一样大  */</span><br><span class="line">        border: 1px solid #000;</span><br><span class="line">        position: relative;</span><br><span class="line">        /* 所有定位形式想要改变位置，都需要配合偏移量属性k:v;：方向英文单词：left  top right bottom */</span><br><span class="line">        left:200px;</span><br><span class="line">        top: 300px;</span><br><span class="line">    &#125;</span><br><span class="line">    /* ******* 特点：</span><br><span class="line">        1、不改变换行标签的特点：宽度和父级一样大</span><br><span class="line">        2、改变位置的参照物是自己</span><br><span class="line">        3、占位脱离标准流</span><br><span class="line">    */</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;div&gt;&lt;img src=&quot;icon3.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>绝对定位：position: absolute;<ul>
-<li>特点：<ul>
-<li>不具备换行标签的特点：宽度和父级宽度一样大</li>
-<li>不占位脱离标准流 – 完全脱离标准流</li>
-<li>参照物：如果满足条件：有最近的已经定位的父级，就以这个父级为参照物；否则，就以浏览器为参照物</li>
-<li>加left: 0; 和 top: 100px; 以浏览器左上角为原点</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        /*所有默认换行的标签，不加width属性，宽度和父级宽度一样大  */</span><br><span class="line">        border: 1px solid #000;</span><br><span class="line">        position: absolute;</span><br><span class="line">        left: 0;</span><br><span class="line">        top: 100px;</span><br><span class="line">    &#125;</span><br><span class="line">    /* </span><br><span class="line">       ******  特点：</span><br><span class="line">        1、不具备换行标签的特点：宽度和父级宽度一样大</span><br><span class="line">        2、不占位脱离标准流 -- 完全脱离标准流</span><br><span class="line">        3、参照物：如果满足条件：有最近的已经定位的父级，就以这个父级为参照物；否则，就以浏览器为参照物</span><br><span class="line">    */</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;div&gt;&lt;img src=&quot;icon3.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>固定定位: position: fixed</p>
-<ul>
-<li><p>固定定位：标签叠加显示；固定这个标签到浏览器的某个位置，不随滚动条滚动而变化位置</p>
-</li>
-<li><p>特点：</p>
-<ul>
-<li>不具备换行标签特点</li>
-<li>完全脱离标准流</li>
-<li>参照物：浏览器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">    &lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        /*所有默认换行的标签，不加width属性，宽度和父级宽度一样大  */</span><br><span class="line">        border: 1px solid #000;</span><br><span class="line">        /* 固定定位：标签叠加显示；固定这个标签到浏览器的某个位置，不随滚动条滚动而变化位置 */</span><br><span class="line">        position: fixed;</span><br><span class="line">        left: 0;</span><br><span class="line">        top: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    /* </span><br><span class="line">    特点：</span><br><span class="line">        1、不具备换行标签特点</span><br><span class="line">        2、完全脱离标准流</span><br><span class="line">        3、参照物：浏览器</span><br><span class="line">    */</span><br><span class="line">    /* position:static  -- 静态定位，不定位  默认值 */</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;div&gt;&lt;img src=&quot;icon3.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位定位&lt;/p&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>静态定位：position:static , 不定位，默认值</li>
-</ul>
-<h3 id="水平垂直都居中的标签"><a href="#水平垂直都居中的标签" class="headerlink" title="水平垂直都居中的标签"></a>水平垂直都居中的标签</h3><ul>
-<li>版心居中？版心 ：换行标签，absolute绝对定位把标签不具备换行标签特点了所有auto居中不生效了</li>
-<li>首先使用：position: absolute; 绝对定位</li>
-<li>left: 50%; margin-left: -250px; top: 50%; margin-top: -150px; 这样就实现了水平和垂直都居中</li>
-<li>如果有2个块级重叠，谁在上面通过：<ul>
-<li>z-index: 10;</li>
-<li>改变定位标签的显示顺序：z-index属性，取值整数，取值越大显示级别越靠上</li>
-</ul>
-</li>
-<li>背景和内容一起透明：opacity: 0.5;</li>
-<li>r red g green b blue a alpha 只透明背景：background: rgba(0,0,0, 0.5); 后面的a只代表背景透明</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        width: 500px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        background: #ccc;</span><br><span class="line">        /* 版心居中？版心 ：换行标签，absolute绝对定位把标签不具备换行标签特点了所有auto居中不生效了 */</span><br><span class="line">        /* margin: 0 auto; */</span><br><span class="line">        position: absolute;</span><br><span class="line">        left: 50%;</span><br><span class="line">        margin-left: -250px;</span><br><span class="line">        top: 50%;</span><br><span class="line">        margin-top: -150px;</span><br><span class="line">        z-index: 10;</span><br><span class="line">        /* 背景和内容一起透明 */</span><br><span class="line">        /* opacity: 0.5; */</span><br><span class="line">        /* r  red  g  green  b blue   a alpha  只透明背景 */</span><br><span class="line">        background: rgba(0,0,0, 0.5);</span><br><span class="line">    &#125;</span><br><span class="line">    /* 默认定位显示标签顺序：后来者居上 */</span><br><span class="line">    /* 改变定位标签的显示顺序：z-index属性，取值整数，取值越大显示级别越靠上 */</span><br><span class="line">    p&#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: #000;</span><br><span class="line">        position: absolute;</span><br><span class="line">        left: 500px;</span><br><span class="line">        top: 400px;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;文字文字阿斯兰的激发了&lt;/div&gt;</span><br><span class="line">    &lt;p&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/18/HTML和CSS基础知识/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -919,7 +731,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/git的一些基本命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/基于hexo+github搭建博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jason Lou">
@@ -938,7 +750,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/18/git的一些基本命令/" itemprop="url">Git的一些基本命令</a></h1>
+                <a class="post-title-link" href="/2020/04/18/基于hexo+github搭建博客/" itemprop="url">基于hexo+github搭建博客</a></h1>
         
 
         <div class="post-meta">
@@ -950,8 +762,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-18T20:15:52+08:00">
-                2019-09-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-18T12:57:11+08:00">
+                2020-04-18
               </time>
             
 
@@ -989,8 +801,134 @@
 
       
         
+          <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>node：<br>检查是否已安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
+
+<p>若未安装，到Node.js<a href="https://nodejs.org/" target="_blank" rel="noopener">官网</a>下载相应平台的最新版本，然后安装</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/18/基于hexo+github搭建博客/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/git的一些基本命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Lou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="a flying piggie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/18/git的一些基本命令/" itemprop="url">Git的一些基本命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-18T12:57:09+08:00">
+                2020-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-            <h3 id="Git的工作流程"><a href="#Git的工作流程" class="headerlink" title="Git的工作流程"></a>Git的工作流程</h3><ul>
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Git的工作流程"><a href="#Git的工作流程" class="headerlink" title="Git的工作流程"></a>Git的工作流程</h3><ul>
 <li>Git是分布式版本控制系统，每一台客户端都是一个独立的Git仓库（有Git的全套机制）</li>
 <li>一个Git仓库分为三个区域：<ol>
 <li>工作区：平时写代码的地方。</li>
@@ -999,1081 +937,13 @@
 </ol>
 </li>
 </ul>
-<h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><h4 id="什么是版本库"><a href="#什么是版本库" class="headerlink" title="什么是版本库"></a>什么是版本库</h4><p>简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。找一个文件夹，创建一个空目录，通过git init命令把这个目录变成Git可以管理的仓库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir directory</span><br><span class="line">$ cd directory</span><br><span class="line">$ pwd</span><br><span class="line">/Users/project/directory</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
-
-<p>创建完成后，会在项目的根目录中展示，git这个文件（隐藏文件）：有这个 .git文件<br>才叫做git仓库，没有则不能被称为git仓库（因为暂存区和历史区的内容都是存储在这个文件夹中的）。</p>
-<h4 id="把工作区的内容提交到暂存区"><a href="#把工作区的内容提交到暂存区" class="headerlink" title="把工作区的内容提交到暂存区"></a>把工作区的内容提交到暂存区</h4><p>把某个文件提交到暂存区：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>把所有修改的文件(修改和新增的包含，删除不包含)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
-
-<p>把所有修改的文件(包含修改和删除的，但是不包含新增的)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add -u</span><br></pre></td></tr></table></figure>
-
-<p>点和U的结合体，所有修改 新增 删除的信息都会提交到暂存区：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add -A</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看当前文件的状态"><a href="#查看当前文件的状态" class="headerlink" title="查看当前文件的状态"></a>查看当前文件的状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>红色 ：在工作区中，还没有提交到暂存区。</li>
-<li>绿色： 在暂存区中，还没有提交到历史区。</li>
-</ul>
-<h4 id="把暂存区内容提交到历史区"><a href="#把暂存区内容提交到历史区" class="headerlink" title="把暂存区内容提交到历史区"></a>把暂存区内容提交到历史区</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit</span><br></pre></td></tr></table></figure>
-
-<p>最好在每回提交的时候，把提交记录名写的清晰一些：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;提交的记录名字&quot;</span><br></pre></td></tr></table></figure>
-
-<p>提交暂存区和提交到历史区的步骤合在一起完成：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -a -m &quot;提交的记录名字&quot;</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看提交历史记录"><a href="#查看提交历史记录" class="headerlink" title="查看提交历史记录"></a>查看提交历史记录</h4><p>不管是从工作区提交到暂存区，还是从暂存区提交到历史区，每一个区域当前的内容都是一直保存的，不会消失。只能查看当前回退版本以前的版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br></pre></td></tr></table></figure>
-
-<p>都是查看历史提交记录（也相当于查看历史版本号），在没有历史版本回滚的时候，用哪个都可以，有历史版本回滚</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
-
-<p>我们发现以上的命令查看日志不太美观，下面这个命令可以可以让日志变的更加清晰、美观</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git lg</span><br></pre></td></tr></table></figure>
-
-<p>什么？输入上去，什么都没有，别着急，把这个命令复制到你的git终端里</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.lg &quot;log --color --graph --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit&quot;</span><br></pre></td></tr></table></figure>
-
-<h4 id="暂存区所有内容撤回工作区"><a href="#暂存区所有内容撤回工作区" class="headerlink" title="暂存区所有内容撤回工作区"></a>暂存区所有内容撤回工作区</h4><p>可以把.替换为具体的文件名。（不管暂存区的内容是否已经提交到历史版本上了）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached . r</span><br></pre></td></tr></table></figure>
-
-<p>把暂存区内容撤回工作区（覆盖现工作区中的内容，无法找回）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout .</span><br></pre></td></tr></table></figure>
-
-<p>在暂存区中，回滚到上一次暂存区中记录的内容（暂存区先回滚一次）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD .</span><br></pre></td></tr></table></figure>
-
-<p>指定回退到哪次提交的版本中(历史区的提交记录) “xxx” 是提交的历史记录。当我们回滚到某一个历史版本之后，暂存区和工作去的内容都将被这个版本内容所代替。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看各个区域的代码变动"><a href="#查看各个区域的代码变动" class="headerlink" title="查看各个区域的代码变动"></a>查看各个区域的代码变动</h4><p>查看不同区域之间代码的不同，我们一般都是基于可视化的页面来查看不一样的.<br>工作区vs暂存区</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br></pre></td></tr></table></figure>
-
-<p>工作区vs历史区</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff master</span><br></pre></td></tr></table></figure>
-
-<p>暂存区vs历史区</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff --cached</span><br></pre></td></tr></table></figure>
-
-<h4 id="将工作区的内容进行保存"><a href="#将工作区的内容进行保存" class="headerlink" title="将工作区的内容进行保存"></a>将工作区的内容进行保存</h4><p>将本地的工作区的内容先给它暂时的保存起来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
-
-<p>将保存起来的代码，进行还原</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash apply</span><br></pre></td></tr></table></figure>
-
-<h4 id="本地仓库和远程仓库保持关联"><a href="#本地仓库和远程仓库保持关联" class="headerlink" title="本地仓库和远程仓库保持关联"></a>本地仓库和远程仓库保持关联</h4><p>远程仓库地址 “xxx” 给远程仓库起的名字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>移除本地仓库跟远程仓库之间的关联 “xxx” 远程仓库的名字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rm &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>查看当前仓库和哪些远程仓库保持关联</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br></pre></td></tr></table></figure>
-
-<h4 id="让本地历史区信息和远程仓库信息保持同步"><a href="#让本地历史区信息和远程仓库信息保持同步" class="headerlink" title="让本地历史区信息和远程仓库信息保持同步"></a>让本地历史区信息和远程仓库信息保持同步</h4><p>把本地代码推送到远程仓库中 origin代表的是远程仓库的名字 master代表的是远程仓库的主分支名字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-
-<p>强制推送代码到远程上(一般建议在工作中不要使用这个命令）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin HEAD:master</span><br></pre></td></tr></table></figure>
-
-<p>把远程仓库中的代码下载到本地中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull origin master</span><br></pre></td></tr></table></figure>
-
-<p>如果本地没有的分支：不要使用<del>git pull</del> 命令 origin代表的是远程仓库的名字 master 就是远程分支的名字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin master-auth:master-auth</span><br></pre></td></tr></table></figure>
-
-<p>如果 pull时候觉得麻烦可以进行克隆url在远程仓库中的代码仓库的地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone  &quot;url&quot;</span><br></pre></td></tr></table></figure>
-
-<h4 id="操作分支的基础命令"><a href="#操作分支的基础命令" class="headerlink" title="操作分支的基础命令"></a>操作分支的基础命令</h4><p>查看现在所有的分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure>
-
-<p>创建一个新的分支（当切换到某个分支上的时候，会把当前master分支中新信息同步到这个新分支上）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>切换到某个分支上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git chechout &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>创建一个新分支并切换到这个分支上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git chechout -b &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>再本地创建一个新的分支，并拉取远程分支到本地新创建的分支上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b  &quot;xxx&quot;[本地新创建分支名字] origin[远程仓库名]/&quot;xxx&quot;[远程仓库的分支]</span><br></pre></td></tr></table></figure>
-
-<p>删除某个分支（一定要切换到其他分支上才可以删除当前分支）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>合并分支内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>在有分支的情况下，可以更清楚看分支提交和合并内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph / --oneline</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/python_while循环/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jason Lou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="a flying piggie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/18/python_while循环/" itemprop="url">Python - while 循环</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-18T20:15:46+08:00">
-                2019-09-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="while-循环简介"><a href="#while-循环简介" class="headerlink" title="while 循环简介"></a>while 循环简介</h2><p>for 循环用于针对集合中的每个元素都一个代码块，而while循环不断的运行，直到指定的条件不满足为止。</p>
-<h3 id="使用-while-循环"><a href="#使用-while-循环" class="headerlink" title="使用 while 循环"></a>使用 while 循环</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">number = 1  # 指定从1开始数</span><br><span class="line">while number &lt;= 5:  # 只要number小于或等于5 就接着运行这个循环</span><br><span class="line">    print(number)  # 打印循环的值</span><br><span class="line">    number += 1  # 再给number值 + 1</span><br><span class="line"> 				# 由此类推, 一旦number大于5，循环就停止，整个程序也将到此结束</span><br><span class="line"># 输出结果如下：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
-
-<h3 id="在循环中使用-break"><a href="#在循环中使用-break" class="headerlink" title="在循环中使用 break"></a>在循环中使用 break</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">while True:   # while True 打头的循环 将不断运行, 知道遇到break 语句</span><br><span class="line">    city = input(&apos;输入您再的城市:&apos;)  # 再输入中，如果输入1 就执行到 break 语句就会退出</span><br><span class="line"></span><br><span class="line">    if city == 1:</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        print(&apos;我喜欢去&#123;&#125;&apos;.format(city))</span><br></pre></td></tr></table></figure>
-
-<p>注意：在任何Python循环中都可使用break 语句。例如，可使用break 语句来退出遍历列表或字典的for 循环。</p>
-<h3 id="在循环中使用-continue"><a href="#在循环中使用-continue" class="headerlink" title="在循环中使用 continue"></a>在循环中使用 continue</h3><p>要返回到循环开头，并根据条件测试结果决定是否继续执行循环，可使用continue 语句，它不像break 语句那样不再执行余下的代码并退出整个循环。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">number = 0  # 先将number 设置为0 ，</span><br><span class="line">while number &lt; 10:  # 由于小于10 python 进行while循环</span><br><span class="line">    number += 1  	# 进入循环后以步长1的方式往上数</span><br><span class="line">    if number % 2 == 0:  # if 语句检查 number 与 2的求模运算结果, 如果结果为0就意味的number可以被2整出, 就执行continue 语句， 让Python忽略余下代码，并返回到循环的开头</span><br><span class="line">        continue</span><br><span class="line">    print(number)</span><br><span class="line"># 输出结果：</span><br><span class="line">1</span><br><span class="line">3</span><br><span class="line">5</span><br><span class="line">7</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
-
-<p>continue 语句是一个删除的效果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var = 10</span><br><span class="line">while var &gt; 0:</span><br><span class="line">    var = var - 1</span><br><span class="line">    if var == 5 or var == 8:</span><br><span class="line">        continue</span><br><span class="line">    print(&apos;当前值:&apos;, var)</span><br><span class="line">print(&apos;Bye&apos;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>continue 语句用来告诉Python 跳过当前循环的剩余语句, 然后继续进行下一轮循环continue 语句用在 while和 for 循环中</li>
-<li>continue 语句跳出本次循环, 而break跳出整个循环</li>
-</ul>
-<h3 id="避免无限循环"><a href="#避免无限循环" class="headerlink" title="避免无限循环"></a>避免无限循环</h3><p>每个 while 循环都必须有停止运行的途径，能够让循环条件为 False 或 break 语句结束无限循环</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = 1</span><br><span class="line">while x &lt;= 5:</span><br><span class="line">    print(x)</span><br><span class="line">    x += 1</span><br><span class="line"># 输出结果如下：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用-while-循环来处理列表和字典"><a href="#使用-while-循环来处理列表和字典" class="headerlink" title="使用 while 循环来处理列表和字典"></a>使用 while 循环来处理列表和字典</h2><ul>
-<li>for 循环是一种遍历列表的有效方式，但在for 循环中不应修改列表，否则将导致Python难以跟踪其中的元素；</li>
-<li>要在遍历列表的同时对其进行修改，可使用while 循环；</li>
-<li>通过将while 循环同列表和字典结合起来使用，可收集、存储并组织大量输入，供以后查看和显示。</li>
-</ul>
-<h3 id="在列表之间移动元素"><a href="#在列表之间移动元素" class="headerlink" title="在列表之间移动元素"></a>在列表之间移动元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">my_list = [&apos;alice&apos;, &apos;brian&apos;, &apos;candace&apos;]</span><br><span class="line">new_list = []</span><br><span class="line">while my_list:</span><br><span class="line">    cur_list = my_list.pop()  # 使用pop()方法的时候, 从my_list列表中, 从末尾的元素删除,pop()删除的值可以赋值给变量cur_list, 依次赋值给cur_list</span><br><span class="line"></span><br><span class="line">    new_list.append(cur_list) # 将变量添加到new_list中</span><br><span class="line"> </span><br><span class="line">for item in new_list:  # 循环new_list 里面就会有跟my_list 相同的元素</span><br><span class="line">    print(item) </span><br><span class="line"># 输出结果如下：</span><br><span class="line">candace</span><br><span class="line">brian</span><br><span class="line">alice</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除包含特定值的所有列表元素"><a href="#删除包含特定值的所有列表元素" class="headerlink" title="删除包含特定值的所有列表元素"></a>删除包含特定值的所有列表元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_list = [&apos;cat&apos;, &apos;dog&apos;, &apos;cat&apos;, &apos;goldfish&apos;, &apos;rabbit&apos;, &apos;cat&apos;]  # 列表中多个包含&apos;cat&apos;</span><br><span class="line">while &apos;cat&apos; in my_list:  # 循环</span><br><span class="line">    my_list.remove(&apos;cat&apos;)</span><br><span class="line">print(my_list)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/vim常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jason Lou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="a flying piggie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/vim常用命令/" itemprop="url">vim常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T09:48:59+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="正常模式（Normal-Mode）"><a href="#正常模式（Normal-Mode）" class="headerlink" title="正常模式（Normal Mode）"></a>正常模式（Normal Mode）</h2><p>浏览和修改文本内容，一般的，打开 Vim 都是正常模式。在任何模式下，只要按下 Esc 键就可以返回正常模式。</p>
-<table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th align="center">作用（解释）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">h</td>
-<td align="center">表示往左</td>
-</tr>
-<tr>
-<td align="center">j</td>
-<td align="center">表示往下</td>
-</tr>
-<tr>
-<td align="center">k</td>
-<td align="center">表示往右</td>
-</tr>
-<tr>
-<td align="center">l</td>
-<td align="center">表示往上</td>
-</tr>
-<tr>
-<td align="center">ctrl + f</td>
-<td align="center">上一页</td>
-</tr>
-<tr>
-<td align="center">ctrl + b</td>
-<td align="center">下一页</td>
-</tr>
-<tr>
-<td align="center">w,e / W,E</td>
-<td align="center">跳到单词的后面，小写包括标点</td>
-</tr>
-<tr>
-<td align="center">b,B</td>
-<td align="center">单词为单位往前跳动光标，小写包含标点</td>
-</tr>
-<tr>
-<td align="center">o</td>
-<td align="center">开启新的一行</td>
-</tr>
-<tr>
-<td align="center">^</td>
-<td align="center">一行的开始</td>
-</tr>
-<tr>
-<td align="center">$</td>
-<td align="center">一行的结尾</td>
-</tr>
-<tr>
-<td align="center">gg</td>
-<td align="center">文档的第一行</td>
-</tr>
-<tr>
-<td align="center">[N]G</td>
-<td align="center">文档的第 N 行或者最后一行</td>
-</tr>
-<tr>
-<td align="center">dd</td>
-<td align="center">删除一行</td>
-</tr>
-<tr>
-<td align="center">dw</td>
-<td align="center">删除一个单词</td>
-</tr>
-<tr>
-<td align="center">x</td>
-<td align="center">删除后一个字符</td>
-</tr>
-<tr>
-<td align="center">X</td>
-<td align="center">删除前一个字符</td>
-</tr>
-<tr>
-<td align="center">D</td>
-<td align="center">删除一行最后一个字符</td>
-</tr>
-<tr>
-<td align="center">[N]yy</td>
-<td align="center">复制一行或者 N 行</td>
-</tr>
-<tr>
-<td align="center">yw</td>
-<td align="center">复制一个单词</td>
-</tr>
-<tr>
-<td align="center">p</td>
-<td align="center">粘贴</td>
-</tr>
-<tr>
-<td align="center">u</td>
-<td align="center">撤销上一步操作</td>
-</tr>
-<tr>
-<td align="center">ctrl+ r</td>
-<td align="center">恢复上一步操作</td>
-</tr>
-<tr>
-<td align="center">.</td>
-<td align="center">重复最后一个命令</td>
-</tr>
-<tr>
-<td align="center">/pattern</td>
-<td align="center">向光标下搜索字符串，可以是正则表达式</td>
-</tr>
-<tr>
-<td align="center">?pattern</td>
-<td align="center">向光标上搜索字符串</td>
-</tr>
-<tr>
-<td align="center">n</td>
-<td align="center">向下搜索前一个搜素动作</td>
-</tr>
-<tr>
-<td align="center">N</td>
-<td align="center">向上搜索前一个搜索动作</td>
-</tr>
-</tbody></table>
-<h2 id="插入模式（Insert-Mode）"><a href="#插入模式（Insert-Mode）" class="headerlink" title="插入模式（Insert Mode）"></a>插入模式（Insert Mode）</h2><p>向文本中添加内容</p>
-<table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th align="center">作用（解释)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">i</td>
-<td align="center">插入到光标前面</td>
-</tr>
-<tr>
-<td align="center">I</td>
-<td align="center">插入到行的开始位置</td>
-</tr>
-<tr>
-<td align="center">a</td>
-<td align="center">插入到光标的后面</td>
-</tr>
-<tr>
-<td align="center">A</td>
-<td align="center">插入到行的最后位置</td>
-</tr>
-<tr>
-<td align="center">o, O</td>
-<td align="center">新开一行</td>
-</tr>
-<tr>
-<td align="center">Esc</td>
-<td align="center">关闭插入模式</td>
-</tr>
-</tbody></table>
-<h2 id="视觉模式-Visual-Mode"><a href="#视觉模式-Visual-Mode" class="headerlink" title="视觉模式 (Visual Mode)"></a>视觉模式 (Visual Mode)</h2><p>相当于高亮选取文本后的普通模式，可视模式具有子模式，以行为单位进行选取的可视行模式，使用 “V” 键进入（也就是 Shift+v ）；和以块为单位进行选取的可视块模式，使用 “Ctrl+v” 键进入。</p>
-<table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th align="center">作用（解释)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">v</td>
-<td align="center">选中一个或多个字符</td>
-</tr>
-<tr>
-<td align="center">V</td>
-<td align="center">选中行</td>
-</tr>
-<tr>
-<td align="center">ctrl+ v</td>
-<td align="center">选中列</td>
-</tr>
-</tbody></table>
-<h2 id="命令模式-Command-Mode"><a href="#命令模式-Command-Mode" class="headerlink" title="命令模式 (Command Mode)"></a>命令模式 (Command Mode)</h2><p>操作文本文件（而不是操作文本文件的内容），例如保存文件；或者用来改变编辑器本身的状态，例如设定多栏窗口、标签或者退出编辑器</p>
-<table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th align="center">作用（解释)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">:set nu</td>
-<td align="center">显示行号</td>
-</tr>
-<tr>
-<td align="center">:set nonu</td>
-<td align="center">取消显示行号</td>
-</tr>
-<tr>
-<td align="center">:set paste</td>
-<td align="center">设置粘贴模式</td>
-</tr>
-<tr>
-<td align="center">:%s/old/new/g</td>
-<td align="center">全文替换</td>
-</tr>
-<tr>
-<td align="center">:w</td>
-<td align="center">保存</td>
-</tr>
-<tr>
-<td align="center">:wq, :x</td>
-<td align="center">保存并关闭</td>
-</tr>
-<tr>
-<td align="center">:q</td>
-<td align="center">关闭（已保存）</td>
-</tr>
-<tr>
-<td align="center">:q!</td>
-<td align="center">强制关闭</td>
-</tr>
-<tr>
-<td align="center">:split</td>
-<td align="center">水平方向分割出一个窗口</td>
-</tr>
-<tr>
-<td align="center">:vsplit</td>
-<td align="center">垂直方向分割出一个窗口</td>
-</tr>
-<tr>
-<td align="center">:close</td>
-<td align="center">关闭窗口</td>
-</tr>
-<tr>
-<td align="center">ctrl+ w</td>
-<td align="center">切换窗口， h 到左边窗口，j 到下方窗口，k 到上方窗口，l 到右边窗口</td>
-</tr>
-</tbody></table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/06/行情接口pytdx用法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jason Lou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="a flying piggie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/06/行情接口pytdx用法/" itemprop="url">通达信行情接口pytdx用法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-06T11:32:03+08:00">
-                2019-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://rainx.gitbooks.io/pytdx/content/" target="_blank" rel="noopener">作者说明链接</a></p>
-<h2 id="标准行情-pytdx-hq"><a href="#标准行情-pytdx-hq" class="headerlink" title="标准行情 pytdx.hq"></a>标准行情 pytdx.hq</h2><p>引入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from pytdx.hq import TdxHq_API</span><br></pre></td></tr></table></figure>
-
-<p>创建对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api = TdxHq_API()</span><br></pre></td></tr></table></figure>
-
-<p>建立连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conn = api.connect(&apos;122.224.113.120&apos;, 7709)</span><br><span class="line"># 方正证券 杭州</span><br><span class="line">conn = api.connect(&apos;47.103.88.146&apos;, 7709)</span><br><span class="line"># 通达信 上海</span><br></pre></td></tr></table></figure>
-
-<p>工作结束时，需要关闭连接，否则以后会无法连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.disconnect()</span><br></pre></td></tr></table></figure>
-
-<p>行情服务器列表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from pytdx.config.hosts import hq_hosts</span><br></pre></td></tr></table></figure>
-
-<h3 id="api-方法"><a href="#api-方法" class="headerlink" title="api 方法"></a>api 方法</h3><ul>
-<li>获取股票行情：需要传入一个列表，每个列表由一个市场代码， 一个股票代码构成的元祖构成 [ (市场代码1， 股票代码1)，(市场代码2， 股票代码2) … (市场代码n， 股票代码n) ]，如：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.get_security_quotes([(0, &apos;000001&apos;), (1, &apos;600300&apos;)])</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意点：非股票品种代码，有些获取的价格不是实际价格，比如可转债获取价格为实际价格 x 10。这是可能是TDX为了防止浮点数错误，报价在传输和存储时实际都保存为整数，然后根据品种进行处理的结果。</p>
-</blockquote>
-<p>获得的结果是个OrderedDict，字段包含：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">market</span><br><span class="line">code</span><br><span class="line">active1</span><br><span class="line">price</span><br><span class="line">last_close</span><br><span class="line">open</span><br><span class="line">high</span><br><span class="line">low</span><br><span class="line">reversed_bytes0</span><br><span class="line">reversed_bytes1</span><br><span class="line">vol</span><br><span class="line">cur_vol</span><br><span class="line">amount</span><br><span class="line">s_vol</span><br><span class="line">b_vol</span><br><span class="line">reversed_bytes2</span><br><span class="line">reversed_bytes3</span><br><span class="line">bid1</span><br><span class="line">ask1</span><br><span class="line">bid_vol1</span><br><span class="line">ask_vol1</span><br><span class="line">bid2</span><br><span class="line">ask2</span><br><span class="line">bid_vol2</span><br><span class="line">ask_vol2</span><br><span class="line">bid3</span><br><span class="line">ask3</span><br><span class="line">bid_vol3</span><br><span class="line">ask_vol3</span><br><span class="line">bid4</span><br><span class="line">ask4</span><br><span class="line">bid_vol4</span><br><span class="line">ask_vol4</span><br><span class="line">bid5</span><br><span class="line">ask5</span><br><span class="line">bid_vol5</span><br><span class="line">ask_vol5</span><br><span class="line">reversed_bytes4</span><br><span class="line">reversed_bytes5</span><br><span class="line">reversed_bytes6</span><br><span class="line">reversed_bytes7</span><br><span class="line">reversed_bytes8</span><br><span class="line">reversed_bytes9</span><br><span class="line">active2</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>获取k线：api.get_security_bars(type, market, code, start, count)<br>  type：0，5分钟；1，15分钟；2，30分钟；3，小时；4，日线，5，周线；6，月线；10，季线；11，年线<br>  market：0，深圳；1，上海<br>  start：指定的范围开始位置<br>  count：要求的k线数目，最大值为800</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.get_security_bars(1, 1, ‘600000’, 4, 3)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>获取市场股票数量：api.get_security_count(market)</li>
-<li>获取股票列表：api.get_security_list(market, start)</li>
-<li>获取指数k线：api.get_index_bars(type, market, code, start, count)</li>
-<li>查询分时行情：api.get_minute_time_data(market, code)</li>
-<li>查询历史分时行情：api.get_history_minute_time_data(market, code, date)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.get_history_minute_time_data(TDXParams.MARKET_SH, ‘600300’, 20161209)</span><br></pre></td></tr></table></figure>
-
-<p>注：在引入TDXParams之后，<code>from pytdx.params import TDXParams</code>，可以使用 TDXParams.MARKET_SH 和 TDXParams.MARKET_SZ 作为常量来替代1和0作为参数</p>
-<ul>
-<li>查询分笔成交：api.get_transaction_data(market, code, start, count)</li>
-<li>查询历史分笔成交：api.get_history_transaction_data(market, code, start, count, date)</li>
-<li>查询公司信息目录：api.get_company_info_categroy(market, code)</li>
-<li>读取公司信息详情：api.get_company_info_content(market, code, filename, start, count)</li>
-<li>读取除权除息信息：api.get_xdxr_info(market, code)，结果是个list，列出每年的分红、送股、配股、缩股、行权</li>
-<li>读取财务信息：api.get_finance_info(market, code)</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/06/Markdown基本语法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jason Lou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="a flying piggie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/06/Markdown基本语法/" itemprop="url">Markdown基本语法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-06T11:27:03+08:00">
-                2019-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Markdown是一种纯文本格式的标记语言。通过简单的标记语法，可以使普通文本内容具有一定的格式。</p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>在想要设置为标题的文字前面加#来表示<br>一个#是一级标题，两个#是二级标题，以此类推，支持六级标题。</p>
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><ul>
-<li><strong>加粗</strong>：要加粗的文字左右分别用两个*号包起来</li>
-<li><em>斜体</em>：要倾斜的文字左右分别用一个*号包起来</li>
-<li><strong><em>斜体加粗</em></strong>：要倾斜和加粗的文字左右分别用三个*号包起来</li>
-<li><del>删除线</del>：要加删除线的文字左右分别用两个~号包起来</li>
-</ul>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>在引用的文字前加&gt;即可，比如：</p>
-<blockquote>
-<p>这样</p>
-</blockquote>
-<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>三个或者三个以上的 - 或者 * 都可以，显示效果是一样的。</p>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：![图片下方的注释内容](图片地址<span class="string">"图片标题"</span>)</span><br></pre></td></tr></table></figure>
-
-<p>图片标题：当鼠标移动到图片上时显示的内容，可加可不加</p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：[链接名称](链接地址<span class="string">"链接标题"</span>)</span><br></pre></td></tr></table></figure>
-
-<p>不支持链接在新页面中打开，如果想要在新页面中打开的话，可以用html语言的a标签代替：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"链接地址"</span> target=<span class="string">"_blank"</span>&gt;链接名称&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><ul>
-<li>无序列表：用 - + * 任何一种都可以</li>
-<li>有序列表：数字加点</li>
-<li>列表嵌套：下级列表tab缩进即可</li>
-</ul>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">-|:-:|-:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br></pre></td></tr></table></figure>
-
-<p>第二行分割表头和内容<br>文字默认居左</p>
-<ul>
-<li>两边加-：表示文字居中</li>
-<li>右边加-：表示文字居右</li>
-</ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>单行代码：前后用反引号（`）包起来<br>代码块：前后用三个反引号号包起来</p>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">```flow</span><br><span class="line">st=&gt;start: Start</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```flow</span><br><span class="line">st=&gt;start: Start</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jason Lou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="a flying piggie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/24/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-24T20:58:17+08:00">
-                2019-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/18/git的一些基本命令/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2153,7 +1023,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2194,7 +1064,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
