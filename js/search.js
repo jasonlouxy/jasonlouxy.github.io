@@ -1,193 +1,137 @@
-(function() {
+// A local search script with the help of [hexo-generator-search](https://github.com/PaicHyperionDev/hexo-generator-search)
+// Copyright (C) 2017 
+// Liam Huang <http://github.com/Liam0205>
+// This library is free software; you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 2.1 of the
+// License, or (at your option) any later version.
+// 
+// This library is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA
+// 
+
+var searchFunc = function (path, search_id, content_id) {
+  // 0x00. environment initialization
   'use strict';
+  // var "<i id='local-search-close'>×</i>";
+  var $input = document.getElementById(search_id);
+  var $resultContent = document.getElementById(content_id);
+  $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+  $.ajax({
+    // 0x01. load xml file
+    url: path,
+    dataType: "xml",
+    success: function (xmlResponse) {
+      // 0x02. parse xml file
+      var datas = $("entry", xmlResponse).map(function () {
+        return {
+          title: $("title", this).text(),
+          content: $("content", this).text(),
+          url: $("url", this).text()
+        };
+      }).get();
+      $resultContent.innerHTML = "";
 
-  var searchInput = document.getElementById('search-input');
-  var searchResult = document.getElementById('search-result');
-  var searchNoResult = document.getElementById('search-no-result');
+      $input.addEventListener('input', function () {
+        // 0x03. parse query to keywords list
+        var str = '<ul class=\"search-result-list\">';
+        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+        $resultContent.innerHTML = "";
+        if (this.value.trim().length <= 0) {
+          return;
+        }
+        // 0x04. perform local searching
+        datas.forEach(function (data) {
+          var isMatch = true;
+          var content_index = [];
+          if (!data.title || data.title.trim() === '') {
+            data.title = "Untitled";
+          }
+          var orig_data_title = data.title.trim();
+          var data_title = orig_data_title.toLowerCase();
+          var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+          var data_content = orig_data_content.toLowerCase();
+          var data_url = data.url;
+          var index_title = -1;
+          var index_content = -1;
+          var first_occur = -1;
+          // only match artiles with not empty contents
+          if (data_content !== '') {
+            keywords.forEach(function (keyword, i) {
+              index_title = data_title.indexOf(keyword);
+              index_content = data_content.indexOf(keyword);
 
-  if (!searchInput || !searchResult) return;
+              if (index_title < 0 && index_content < 0) {
+                isMatch = false;
+              } else {
+                if (index_content < 0) {
+                  index_content = 0;
+                }
+                if (i == 0) {
+                  first_occur = index_content;
+                }
+                // content_index.push({index_content:index_content, keyword_len:keyword_len});
+              }
+            });
+          } else {
+            isMatch = false;
+          }
+          // 0x05. show search results
+          if (isMatch) {
+            str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+            var content = orig_data_content;
+            if (first_occur >= 0) {
+              // cut out 100 characters
+              var start = first_occur - 20;
+              var end = first_occur + 80;
 
-  var searchData = null;
-  var isLoading = false;
+              if (start < 0) {
+                start = 0;
+              }
 
-  // ========================================
-  // Load Search Data
-  // ========================================
-  function loadSearchData(callback) {
-    if (searchData) {
-      callback(searchData);
-      return;
-    }
+              if (start == 0) {
+                end = 100;
+              }
 
-    if (isLoading) return;
-    isLoading = true;
+              if (end > content.length) {
+                end = content.length;
+              }
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/search.xml', true);
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        searchData = parseSearchData(xhr.responseXML);
-        callback(searchData);
-      }
-      isLoading = false;
-    };
-    xhr.onerror = function() {
-      console.error('Failed to load search data');
-      isLoading = false;
-    };
-    xhr.send();
-  }
+              var match_content = content.substr(start, end);
 
-  // ========================================
-  // Parse Search Data from XML
-  // ========================================
-  function parseSearchData(xml) {
-    if (!xml) return [];
+              // highlight all keywords
+              keywords.forEach(function (keyword) {
+                var regS = new RegExp(keyword, "gi");
+                match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+              });
 
-    var entries = xml.querySelectorAll('entry');
-    var data = [];
-
-    entries.forEach(function(entry) {
-      var titleEl = entry.querySelector('title');
-      var urlEl = entry.querySelector('url');
-      var contentEl = entry.querySelector('content');
-
-      if (titleEl && urlEl) {
-        data.push({
-          title: titleEl.textContent || '',
-          url: urlEl.textContent || '',
-          content: contentEl ? contentEl.textContent || '' : ''
+              str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+            }
+            str += "<hr></li>";
+          }
         });
-      }
-    });
-
-    return data;
-  }
-
-  // ========================================
-  // Perform Search
-  // ========================================
-  function performSearch(keyword) {
-    keyword = keyword.trim().toLowerCase();
-
-    if (!keyword) {
-      clearResults();
-      return;
-    }
-
-    loadSearchData(function(data) {
-      var results = data.filter(function(item) {
-        var titleMatch = item.title.toLowerCase().indexOf(keyword) !== -1;
-        var contentMatch = item.content.toLowerCase().indexOf(keyword) !== -1;
-        return titleMatch || contentMatch;
+        str += "</ul>";
+        if (str.indexOf('<li>') === -1) {
+          return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+        }
+        $resultContent.innerHTML = str;
       });
-
-      displayResults(results, keyword);
-    });
-  }
-
-  // ========================================
-  // Display Results
-  // ========================================
-  function displayResults(results, keyword) {
-    if (results.length === 0) {
-      searchResult.innerHTML = '';
-      if (searchNoResult) {
-        searchNoResult.style.display = 'block';
-      }
-      return;
-    }
-
-    if (searchNoResult) {
-      searchNoResult.style.display = 'none';
-    }
-
-    var html = '<ul class="search-result-list">';
-
-    results.slice(0, 10).forEach(function(item) {
-      var title = highlightKeyword(escapeHtml(item.title), keyword);
-      html += '<li class="search-result-item">';
-      html += '<a href="' + escapeHtml(item.url) + '">' + title + '</a>';
-      html += '</li>';
-    });
-
-    if (results.length > 10) {
-      html += '<li class="search-result-more">And ' + (results.length - 10) + ' more results...</li>';
-    }
-
-    html += '</ul>';
-    searchResult.innerHTML = html;
-  }
-
-  // ========================================
-  // Clear Results
-  // ========================================
-  function clearResults() {
-    searchResult.innerHTML = '';
-    if (searchNoResult) {
-      searchNoResult.style.display = 'none';
-    }
-  }
-
-  // ========================================
-  // Highlight Keyword
-  // ========================================
-  function highlightKeyword(text, keyword) {
-    if (!keyword) return text;
-
-    var regex = new RegExp('(' + escapeRegex(keyword) + ')', 'gi');
-    return text.replace(regex, '<mark>$1</mark>');
-  }
-
-  // ========================================
-  // Escape HTML
-  // ========================================
-  function escapeHtml(text) {
-    var div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-
-  // ========================================
-  // Escape Regex
-  // ========================================
-  function escapeRegex(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
-
-  // ========================================
-  // Debounce
-  // ========================================
-  function debounce(func, wait) {
-    var timeout;
-    return function() {
-      var context = this;
-      var args = arguments;
-      clearTimeout(timeout);
-      timeout = setTimeout(function() {
-        func.apply(context, args);
-      }, wait);
-    };
-  }
-
-  // ========================================
-  // Event Listeners
-  // ========================================
-  searchInput.addEventListener('input', debounce(function() {
-    performSearch(this.value);
-  }, 300));
-
-  searchInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      this.value = '';
-      clearResults();
-      this.blur();
     }
   });
-
-  // Preload search data on focus
-  searchInput.addEventListener('focus', function() {
-    loadSearchData(function() {});
+  $(document).on('click', '#search-close-icon', function() {
+    $('#search-input').val('');
+    $('#search-result').html('');
   });
+}
 
-})();
+var getSearchFile = function(){
+    var path = "/search.xml";
+    searchFunc(path, 'search-input', 'search-result');
+}
