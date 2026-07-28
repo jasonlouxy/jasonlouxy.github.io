@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Jason Lou" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      USDT的流转原理 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">LEEDOM</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jul 27, 2026
+  </h3>
+  <h1>
+    USDT的流转原理
+  </h1>
+  <div class="content markdown-body">
+    <h3 id="USDT-Network-Fee-Breakdown"><a href="#USDT-Network-Fee-Breakdown" class="headerlink" title="USDT Network Fee Breakdown"></a>USDT Network Fee Breakdown</h3><table>
+<thead>
+<tr>
+<th>Network Type</th>
+<th>Average Cost Per Transfer</th>
+<th>Best ###Used For</th>
+<th>Key Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ethereum (ERC-20)</strong></td>
+<td><strong>$2.00 to $10.00+</strong></td>
+<td>Broadest DeFi &amp; dApp ecosystem</td>
+<td>Can easily spike over $20 to $30 during high traffic.</td>
+</tr>
+<tr>
+<td><strong>Tron (TRC-20)</strong></td>
+<td><strong>$1.00 to $3.90</strong></td>
+<td>Broadest exchange liquidity</td>
+<td>Costs up to ~$3.90 if the receiving address never held USDT before.</td>
+</tr>
+<tr>
+<td><strong>Arbitrum &#x2F; Base</strong></td>
+<td><strong>$0.01 to $0.10</strong></td>
+<td>High security + extreme discount</td>
+<td>Layer 2 networks cut mainnet costs by up to 99%.</td>
+</tr>
+<tr>
+<td><strong>Solana (SPL)</strong></td>
+<td><strong>Under $0.01</strong></td>
+<td>Microtransactions &amp; speed</td>
+<td>Blazing fast but requires a Solana app setup on your Ledger.</td>
+</tr>
+</tbody></table>
+<h3 id="Reason-on-Diff-Fee-rates"><a href="#Reason-on-Diff-Fee-rates" class="headerlink" title="Reason on Diff Fee rates"></a>Reason on Diff Fee rates</h3><p>The massive difference in fee rates between Ethereum, Tron, and Solana comes down to <strong>how they prioritize decentralization versus speed</strong>, the mathematical math behind their code, and how they handle network traffic. </p>
+<p>In crypto, this trade-off is known as the <strong>Blockchain Trilemma</strong> (balancing security, decentralization, and scalability).</p>
+<ol>
+<li>Consensus Mechanism and Hardware (Why Solana is Cheapest)<ul>
+<li><strong>Solana (Proof of History + Proof of Stake):</strong> Solana requires validators to use incredibly powerful, expensive enterprise-grade computers. Because the hardware is so fast, the network can process up to 65,000 transactions per second (TPS). Because the system can handle so much data at once, the cost per individual transaction is fractions of a cent. </li>
+<li><strong>Tron (Delegated Proof of Stake):</strong> Tron limits its network to only 21 “Super Representatives” (validators) who process all data. Because there are only 21 computers running the main network, consensus is reached very fast and transactions are cheap (usually around $1 to $3). However, it is much more centralized than Ethereum. </li>
+<li><strong>Ethereum (Proof of Stake):</strong> Ethereum prioritizes maximum decentralization. It has hundreds of thousands of individual validators running modest hardware all over the world. This makes it highly secure, but it can only process about 15 to 30 transactions per second on its main layer, creating a major data bottleneck.</li>
+</ul>
+</li>
+<li>The Bidding War for Space (Why Ethereum is Expensive). When a blockchain gets busy, users must compete to get their transaction processed next.<ul>
+<li><strong>Ethereum’s Auction Model:</strong> When thousands of people want to use Ethereum at the same time, it turns into a blind auction. Users must pay a higher “gas fee” to bribe validators to process their transaction first. During bull markets or popular NFT drops, fees spike to $50+ because people are actively outbidding each other for limited space. </li>
+<li><strong>Solana’s Localized Congestion:</strong> Solana isolates fees by application. If millions of people are buying one specific meme coin, only the fees for <em>that specific coin’s contract</em> rise. Sending standard USDT on the other side of the network remains completely unaffected and ultra-cheap.</li>
+</ul>
+</li>
+<li>Smart Contract Complexity. USDT is not a simple native coin; it is a smart contract program.<ul>
+<li>Moving USDT on <strong>Ethereum</strong> requires the network to execute complex code to update balance ledgers across thousands of global nodes, requiring a lot of computational energy. </li>
+<li>Moving USDT on <strong>Solana</strong> utilizes highly optimized, pre-compiled token programs designed specifically to execute data transfers using minimal computing power.</li>
+</ul>
+</li>
+</ol>
+<h3 id="Justify-the-Risks"><a href="#Justify-the-Risks" class="headerlink" title="Justify the Risks"></a>Justify the Risks</h3><h4 id="What-if-solana’s-super-computer-is-down"><a href="#What-if-solana’s-super-computer-is-down" class="headerlink" title="What if solana’s super computer is down"></a>What if solana’s super computer is down</h4><ol>
+<li>Your Coins Live on the Blockchain, Not the Computer</li>
+</ol>
+<p>Your USDT does not sit inside a physical Solana computer, nor does it sit inside your Ledger. It exists as a digital line of code on a shared public ledger (the blockchain). </p>
+<ul>
+<li>Think of the blockchain like a global banking spreadsheet.</li>
+<li>When the network goes down, the spreadsheet is temporarily <strong>locked</strong> and nobody can add new lines.</li>
+<li>However, the existing data—including the exact balance belonging to your Ledger address—remains safely saved across thousands of hard drives.</li>
+</ul>
+<ol start="2">
+<li>What Happens When Solana Freezes?</li>
+</ol>
+<p>Solana has experienced temporary network outages in the past. During an outage:</p>
+<ul>
+<li><strong>Your funds are frozen:</strong> You cannot send, receive, or trade your USDT. </li>
+<li><strong>Ledger Live might show $0:</strong> Because Ledger cannot talk to the Solana network during a crash, your app might temporarily display a balance of zero or show an error message. <strong>Do not panic.</strong> This is just a display glitch because the app can’t fetch data.</li>
+<li><strong>Transactions are paused:</strong> Any transaction you sent right before the crash will either sit in a queue or fail completely, returning the funds to your address.</li>
+</ul>
+<ol start="3">
+<li>Your Ledger is Your Ultimate Backup</li>
+</ol>
+<p>The physical Ledger device holds your <strong>Private Keys</strong> (derived from your 24-word recovery phrase). These keys are the ultimate mathematical proof that you own your specific address.  </p>
+<p>As soon as the Solana validators reboot their systems and the network turns back on, your Ledger will instantly reconnect to the updated spreadsheet, and your USDT will reappear exactly where you left it.</p>
+<h4 id="What-if-the-solana-validators-don’t-reboot-their-systems"><a href="#What-if-the-solana-validators-don’t-reboot-their-systems" class="headerlink" title="What if the solana validators don’t reboot their systems"></a>What if the solana validators don’t reboot their systems</h4><ol>
+<li>Your Coins Are Duplicated Thousands of Times</li>
+</ol>
+<p>Solana is not managed by one single company or a unified cluster of supercomputers. The network relies on <strong>hundreds of independent validators</strong> scattered across over 35 different countries. </p>
+<ul>
+<li>Every single one of these validators keeps an <strong>identical, exact copy</strong> of the entire blockchain ledger history on their local hard drives.</li>
+<li>If a massive outage occurs and a group of main validators decide to permanently walk away, your data is not lost. The remaining active history copies are still fully intact on all the other hard drives globally.</li>
+</ul>
+<ol start="2">
+<li>A New Group of Validators Can Just Pick Up the Pieces</li>
+</ol>
+<p>A blockchain is ultimately open-source data. If the original operators completely abandon the network, any group of engineers or community members can safely take the last recorded “snapshot” of the ledger right before the crash.</p>
+<ul>
+<li>They can use that exact backup data to launch a network restart or a split chain (called a hard fork).</li>
+<li>Because your Ledger public address and your exact USDT balance are permanently written into that last snapshot, your coins would automatically exist and be fully accessible on the revived network.</li>
+</ul>
+<ol start="3">
+<li>Your Private Key Gives You Absolute Ownership</li>
+</ol>
+<p>Your Ledger device holds the mathematical private keys that prove you own your specific wallet address. No validator has the administrative power to change your balances, delete your wallet, or alter the ledger history. As long as you keep your 24-word recovery phrase safe, your ownership over your USDT remains absolute and locked in mathematics, regardless of whether a network is running or temporarily paused. </p>
+<h4 id="So-the-same-logical-with-tron-and-ethereum"><a href="#So-the-same-logical-with-tron-and-ethereum" class="headerlink" title="So the same logical with tron and ethereum"></a>So the same logical with tron and ethereum</h4><p>Yes, the exact same logic applies to <strong>Tron</strong> and <strong>Ethereum</strong>. Your coins will never disappear or be wiped on those networks either, because your funds exist on a decentralized public ledger, not within a single company or computer.</p>
+<p>In fact, Ethereum and Tron are structurally designed to be <strong>even more resilient</strong> to permanent shutdowns than Solana.</p>
+<h5 id="How-Ethereum-and-Tron-Take-This-Safety-Further"><a href="#How-Ethereum-and-Tron-Take-This-Safety-Further" class="headerlink" title="How Ethereum and Tron Take This Safety Further"></a>How Ethereum and Tron Take This Safety Further</h5><ul>
+<li><strong>Ethereum is Built to Survive a Global Collapse:</strong> Ethereum has over one million independent validators worldwide. Many of these validators run on simple, consumer-grade home computers rather than enterprise data centers. It is practically impossible for all one million computers across the globe to turn off and never reboot at the exact same time. </li>
+<li><strong>The Bitcoin&#x2F;Ethereum Precedent:</strong> Over the last decade, many smaller blockchains have been completely abandoned by their original developers. Yet, because the historical ledger data remained on random laptops around the world, those networks still exist today, and the wallet balances remain perfectly intact.</li>
+</ul>
+<h5 id="The-Universal-Rule-for-All-Three-Networks"><a href="#The-Universal-Rule-for-All-Three-Networks" class="headerlink" title="The Universal Rule for All Three Networks"></a>The Universal Rule for All Three Networks</h5><p>Whether you choose Solana, Tron, or Ethereum, the dynamic between your Ledger and the blockchain is identical:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Where it Lives &#x2F; What Happens</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Your USDT Balances</strong></td>
+<td>Saved on thousands of hard drives globally (the blockchain ledger).</td>
+</tr>
+<tr>
+<td><strong>Your Right to Spend It</strong></td>
+<td>Generated completely offline by your physical Ledger’s 24-word recovery phrase.</td>
+</tr>
+<tr>
+<td><strong>If a Network Freezes</strong></td>
+<td>You temporarily cannot move the coins, but the data cannot be erased.</td>
+</tr>
+<tr>
+<td><strong>If the Network Restarts</strong></td>
+<td>Your Ledger instantly reconnects to the ledger, and your balances reappear.</td>
+</tr>
+</tbody></table>
+<h4 id="Is-the-majority-trading-concentrated-on-solana"><a href="#Is-the-majority-trading-concentrated-on-solana" class="headerlink" title="Is the majority trading concentrated on solana"></a>Is the majority trading concentrated on solana</h4><p><strong>Yes, Solana handles the majority of decentralized exchange (DEX) trading volume</strong>, recently overtaking Ethereum mainnet and its entire Layer 2 ecosystem combined in on-chain trading activity. </p>
+<p>Driven by sub-cent transaction fees and high-speed execution, Solana handles a massive volume of spot trades, though Ethereum maintains dominance in total institutional value locked (TVL) and market capitalization. </p>
+<h5 id="Why-Solana-Leads-On-Chain-Trading-Volume"><a href="#Why-Solana-Leads-On-Chain-Trading-Volume" class="headerlink" title="Why Solana Leads On-Chain Trading Volume"></a>Why Solana Leads On-Chain Trading Volume</h5><ol>
+<li>High-Frequency and Retail Trading Dominance</li>
+</ol>
+<p>Because transactions cost fractions of a penny, Solana is uniquely built for high-frequency trading and retail consumers. Traders can execute dozens of daily swaps, adjust orders instantly, or buy tiny amounts of crypto without worrying about a $10 gas fee eating into their capital. </p>
+<ol start="2">
+<li>The Volume “Flippening”</li>
+</ol>
+<p>In early 2026, daily on-chain DEX trading volume on Solana officially surged ahead of Ethereum. According to market tracking data: </p>
+<ul>
+<li><strong>Solana’s DEX Volume</strong> captured approximately <strong>38% of all on-chain trading volume</strong> across the entire crypto ecosystem. </li>
+<li><strong>Liquidity Aggregation:</strong> Platforms like <a target="_blank" rel="noopener" href="https://crypticweb3.com/best-dex-in-2026-top-decentralized-exchanges-ranked/">Jupiter</a> route over 60% of Solana’s trade flows flawlessly across automated market makers (AMMs) like Raydium and Meteora, turning the blockchain into a massive, cohesive marketplace.</li>
+</ul>
+<h4 id="The-Catch-Centralized-Exchanges-vs-On-Chain-Volume"><a href="#The-Catch-Centralized-Exchanges-vs-On-Chain-Volume" class="headerlink" title="The Catch: Centralized Exchanges vs. On-Chain Volume"></a>The Catch: Centralized Exchanges vs. On-Chain Volume</h4><p>While Solana dominates <strong>decentralized (on-chain) trading</strong>, it does not capture the majority of global, overall crypto trading. The broader ecosystem is divided into two distinct environments: </p>
+<ol>
+<li>Centralized Exchanges (CEXs) Still Rule Total Volume</li>
+</ol>
+<p>The vast majority of absolute global trading volume—especially for heavy hitting assets like Bitcoin and Ethereum—still happens inside massive centralized off-chain order books like Binance or Coinbase. The ratio of total decentralized trading (DEX) to centralized trading (CEX) typically hovers around <strong>13% to 14%</strong>.</p>
+<ol start="2">
+<li>Ethereum Holds the “Big Money”</li>
+</ol>
+<p>While Solana wins on the absolute <em>number</em> of trades and retail trading volume, Ethereum remains the heavy-industry standard. Large hedge funds, institutions, and major asset managers prefer Ethereum’s base layer because it holds over <strong>53% of all Total Value Locked (TVL)</strong> in crypto. Institutions value Ethereum’s maximum security and long-term stability over Solana’s raw speed. </p>
+<h5 id="Summary-Who-Uses-What"><a href="#Summary-Who-Uses-What" class="headerlink" title="Summary: Who Uses What?"></a>Summary: Who Uses What?</h5><ul>
+<li>Choose <strong>Solana</strong> if you want to trade frequently, explore new consumer tokens, or move retail amounts of USDT with the absolute minimum friction. </li>
+<li>Choose <strong>Ethereum</strong> (or its Layer 2 networks like Arbitrum or Base) if you are moving hundreds of thousands of dollars at a time and want institutional-grade security.</li>
+</ul>
+
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2026/06/18/%E6%B6%88%E8%B4%B9%E5%93%81%E5%85%AC%E5%8F%B8%E9%9D%A0%E4%BB%80%E4%B9%88%E5%A2%9E%E9%95%BF/">OLDER&nbsp;&gt;</a>
+      
+        
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="$ grep...">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>
