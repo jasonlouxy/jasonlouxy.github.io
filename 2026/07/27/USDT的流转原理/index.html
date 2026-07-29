@@ -121,7 +121,7 @@
     USDT的流转原理
   </h1>
   <div class="content markdown-body">
-    <h1 id="USDT-过户通道费"><a href="#USDT-过户通道费" class="headerlink" title="USDT 过户通道费"></a>USDT 过户通道费</h1><table>
+    <h2 id="USDT-过户通道费"><a href="#USDT-过户通道费" class="headerlink" title="USDT 过户通道费"></a>USDT 过户通道费</h2><table>
 <thead>
 <tr>
 <th>通道类型</th>
@@ -155,7 +155,7 @@
 <td>非常快，但需要在冷钱包里安装 Solana app</td>
 </tr>
 </tbody></table>
-<h1 id="通道费差异巨大的原因"><a href="#通道费差异巨大的原因" class="headerlink" title="通道费差异巨大的原因"></a>通道费差异巨大的原因</h1><p>本质上源于三者对“去中心化“与”速度“的优先级取舍、底层代码的数学设计架构，以及网络流量处理机制的差异。在加密货币领域，这种权衡被称为”区块链三元悖论“（即必须在安全性、去中心化和可扩展性之间取得平衡</p>
+<h2 id="通道费差异巨大的原因"><a href="#通道费差异巨大的原因" class="headerlink" title="通道费差异巨大的原因"></a>通道费差异巨大的原因</h2><p>本质上源于三者对“去中心化“与”速度“的优先级取舍、底层代码的数学设计架构，以及网络流量处理机制的差异。在加密货币领域，这种权衡被称为”区块链三元悖论“（即必须在安全性、去中心化和可扩展性之间取得平衡</p>
 <ol>
 <li>共识机制与硬件（为什么Solana最便宜）<ul>
 <li>Solana（历史证明PoH + 权益证明PoS）：验证节点需使用<strong>昂贵的企业级超强算力服务器</strong>。凭借硬件的高性能，网络可处理每秒65,000笔交易（TPS）。由于系统能同时吞吐海量数据，单笔交易成本可低至不足1美分。</li>
@@ -174,7 +174,7 @@
 </ul>
 </li>
 </ol>
-<h1 id="风险和故障应对指南"><a href="#风险和故障应对指南" class="headerlink" title="风险和故障应对指南"></a>风险和故障应对指南</h1><h2 id="问题1：如果Solana的超级计算机宕机了怎么办？"><a href="#问题1：如果Solana的超级计算机宕机了怎么办？" class="headerlink" title="问题1：如果Solana的超级计算机宕机了怎么办？"></a>问题1：如果Solana的超级计算机宕机了怎么办？</h2><ol>
+<h2 id="风险和故障应对指南"><a href="#风险和故障应对指南" class="headerlink" title="风险和故障应对指南"></a>风险和故障应对指南</h2><h3 id="问题1：如果Solana的超级计算机宕机了怎么办？"><a href="#问题1：如果Solana的超级计算机宕机了怎么办？" class="headerlink" title="问题1：如果Solana的超级计算机宕机了怎么办？"></a>问题1：如果Solana的超级计算机宕机了怎么办？</h3><ol>
 <li>代币存储在区块链上，而非设备中。USDT既不存储在实体Solana计算机里，也不直接存在于Ledger硬件钱包中。它实际上是一条记录在共享公共账本（区块链）上的数字代码。<ul>
 <li>类比理解：区块链如同全球共享的银行账本表格</li>
 <li>网络中断时：账本会被暂时<strong>锁定</strong>，无法新增记录</li>
@@ -193,7 +193,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="问题2：如果宕机后，Solana的验证节点并未重启成功怎么办？"><a href="#问题2：如果宕机后，Solana的验证节点并未重启成功怎么办？" class="headerlink" title="问题2：如果宕机后，Solana的验证节点并未重启成功怎么办？"></a>问题2：如果宕机后，Solana的验证节点并未重启成功怎么办？</h2><ol>
+<h3 id="问题2：如果宕机后，Solana的验证节点并未重启成功怎么办？"><a href="#问题2：如果宕机后，Solana的验证节点并未重启成功怎么办？" class="headerlink" title="问题2：如果宕机后，Solana的验证节点并未重启成功怎么办？"></a>问题2：如果宕机后，Solana的验证节点并未重启成功怎么办？</h3><ol>
 <li>代币数据被全球千次备份。Solana并非由单一公司或集中式超算集群管理，其网络依赖遍布35个以上国家的数百个独立验证节点。<ul>
 <li>每个验证节点都在本地硬盘保存着完全相同的区块链账本历史副本</li>
 <li>即使发生大规模故障且部分主验证节点永久退出，数据仍不会丢失——全球其他活跃节点仍完整保有所有历史记录</li>
@@ -206,12 +206,14 @@
 </li>
 <li>私钥赋予绝对所有权（无惧网络状态）。Ledger设备存储着<strong>证明钱包所有权</strong>的数学私钥。验证节点无权：修改余额、删除钱包、篡改历史账本</li>
 </ol>
-<h2 id="问题3：Tron和-Ethereum是否基于同样的逻辑"><a href="#问题3：Tron和-Ethereum是否基于同样的逻辑" class="headerlink" title="问题3：Tron和 Ethereum是否基于同样的逻辑"></a>问题3：Tron和 Ethereum是否基于同样的逻辑</h2><p>是的，Tron和Ethereum同样适用这套机制。代币在公链上永远不会消失——因为它们存在于去中心化的公共账本上，而非某家公司或单台电脑中。从架构设计来看，Tron和Ethereum甚至比Solana具备更强的抗永久关闭能力。</p>
-<h3 id="Ethereum和Tron的进阶容错设计："><a href="#Ethereum和Tron的进阶容错设计：" class="headerlink" title="Ethereum和Tron的进阶容错设计："></a>Ethereum和Tron的进阶容错设计：</h3><ul>
+<h3 id="问题3：Tron和-Ethereum是否基于同样的逻辑"><a href="#问题3：Tron和-Ethereum是否基于同样的逻辑" class="headerlink" title="问题3：Tron和 Ethereum是否基于同样的逻辑"></a>问题3：Tron和 Ethereum是否基于同样的逻辑</h3><p>是的，Tron和Ethereum同样适用这套机制。代币在公链上永远不会消失——因为它们存在于去中心化的公共账本上，而非某家公司或单台电脑中。从架构设计来看，Tron和Ethereum甚至比Solana具备更强的抗永久关闭能力。</p>
+<p>Ethereum和Tron的进阶容错设计</p>
+<ul>
 <li>Ethereum：可抵御全球级灾难。以太坊拥有遍布全球的超100万个独立验证节点，且多数节点仅需普通家用电脑即可运行（无需企业级数据中心）。要让全球所有节点同时永久关机，这在实际中根本不可能发生。</li>
 <li>比特币&#x2F;以太坊的先例验证。过去十年间，许多小众区块链曾被开发团队彻底废弃。但由于历史账本数据仍分散保存在全球各地的设备中，这些网络至今仍可访问，所有钱包余额均完好无损。</li>
 </ul>
-<h3 id="三大网络的通用安全法则"><a href="#三大网络的通用安全法则" class="headerlink" title="三大网络的通用安全法则"></a>三大网络的通用安全法则</h3><p>无论选择Solana、Tron还是Ethereum，Ledger硬件钱包与区块链的交互逻辑完全一致：</p>
+<p>三大网络的通用安全法则</p>
+<p>无论选择Solana、Tron还是Ethereum，Ledger硬件钱包与区块链的交互逻辑完全一致：</p>
 <table>
 <thead>
 <tr>
@@ -241,8 +243,9 @@
 <td>Ledger硬件钱包将立即同步账本并显示完整余额</td>
 </tr>
 </tbody></table>
-<h2 id="问题4：是否主要的加密币交易都集中在-Solana"><a href="#问题4：是否主要的加密币交易都集中在-Solana" class="headerlink" title="问题4：是否主要的加密币交易都集中在 Solana"></a>问题4：是否主要的加密币交易都集中在 Solana</h2><p>确实，Solana已成为去中心化交易所（DEX）交易量的主导者。其链上交易规模已超越Ethereum主网及其所有Layer 2生态的总和，这得益于不足1美分的交易费用和毫秒级执行速度——尽管Ethereum仍在总锁仓价值（TVL）和市值方面保持优势。</p>
-<h3 id="为何Solana领跑链上交易量？"><a href="#为何Solana领跑链上交易量？" class="headerlink" title="为何Solana领跑链上交易量？"></a>为何Solana领跑链上交易量？</h3><ol>
+<h3 id="问题4：是否主要的加密币交易都集中在-Solana"><a href="#问题4：是否主要的加密币交易都集中在-Solana" class="headerlink" title="问题4：是否主要的加密币交易都集中在 Solana"></a>问题4：是否主要的加密币交易都集中在 Solana</h3><p>确实，Solana已成为去中心化交易所（DEX）交易量的主导者。其链上交易规模已超越Ethereum主网及其所有Layer 2生态的总和，这得益于不足1美分的交易费用和毫秒级执行速度——尽管Ethereum仍在总锁仓价值（TVL）和市值方面保持优势。</p>
+<p>为何Solana领跑链上交易量？</p>
+<ol>
 <li>高频交易与零售用户的主场。得益于单笔交易成本不足1美分的特性，Solana天生就是为高频交易者和散户打造的：<ul>
 <li>每日可执行数十次代币兑换</li>
 <li>实时调整订单无需担心手续费损耗</li>
@@ -255,7 +258,8 @@
 </ul>
 </li>
 </ol>
-<h3 id="另一面真相：CEX与链上交易的分野"><a href="#另一面真相：CEX与链上交易的分野" class="headerlink" title="另一面真相：CEX与链上交易的分野"></a>另一面真相：CEX与链上交易的分野</h3><p>虽然Solana统治着去中心化（链上）交易领域，但全球总体交易量仍集中在：</p>
+<p>另一面真相：CEX与链上交易的分野</p>
+<p>虽然Solana统治着去中心化（链上）交易领域，但全球总体交易量仍集中在：</p>
 <ol>
 <li>中心化交易所（CEX）仍是绝对主力。BTC&#x2F;ETH等核心资产的交易，依旧发生在Binance&#x2F;Coinbase等链下订单簿中。去中心化交易（DEX）仅占全球总交易量的13%-14%。</li>
 <li>Ethereum坐镇”大资金战场”。Solana虽在交易笔数和零售量上取胜，但Ethereum仍掌控：<ul>
@@ -265,7 +269,8 @@
 </ul>
 </li>
 </ol>
-<h3 id="选链总结"><a href="#选链总结" class="headerlink" title="选链总结"></a>选链总结</h3><ul>
+<p>选链总结</p>
+<ul>
 <li>Solana：高频交易、探索新锐代币、小额USDT转移</li>
 <li>Ethereum：机构级大额资产操作，安全性优先</li>
 </ul>
