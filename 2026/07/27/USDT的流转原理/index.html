@@ -121,160 +121,157 @@
     USDT的流转原理
   </h1>
   <div class="content markdown-body">
-    <h3 id="USDT-Network-Fee-Breakdown"><a href="#USDT-Network-Fee-Breakdown" class="headerlink" title="USDT Network Fee Breakdown"></a>USDT Network Fee Breakdown</h3><table>
+    <h3 id="USDT-过户通道费"><a href="#USDT-过户通道费" class="headerlink" title="USDT 过户通道费"></a>USDT 过户通道费</h3><table>
 <thead>
 <tr>
-<th>Network Type</th>
-<th>Average Cost Per Transfer</th>
-<th>Best Used For</th>
-<th>Key Note</th>
+<th>通道类型</th>
+<th>平均费率</th>
+<th>特征</th>
+<th>备注</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>Ethereum (ERC-20)</strong></td>
-<td><strong>$2.00 to $10.00+</strong></td>
-<td>Broadest DeFi &amp; dApp ecosystem</td>
-<td>Can easily spike over $20 to $30 during high traffic.</td>
+<td>Ethereum</td>
+<td>2 - 10美元 或 更高</td>
+<td>支持最多的 DeFi 协议和去中心化应用</td>
+<td>在高流量的时候会提高到20 - 30 美元</td>
 </tr>
 <tr>
-<td><strong>Tron (TRC-20)</strong></td>
-<td><strong>$1.00 to $3.90</strong></td>
-<td>Broadest exchange liquidity</td>
-<td>Costs up to ~$3.90 if the receiving address never held USDT before.</td>
+<td>Tron</td>
+<td>1 - 3.9美元</td>
+<td>最广泛的流动性</td>
+<td>若收款钱包未曾持有过USDT，则费用会提高到3.9美元</td>
 </tr>
 <tr>
-<td><strong>Arbitrum &#x2F; Base</strong></td>
-<td><strong>$0.01 to $0.10</strong></td>
-<td>High security + extreme discount</td>
-<td>Layer 2 networks cut mainnet costs by up to 99%.</td>
+<td>Arbitrum &#x2F; Base</td>
+<td>0.01 - 0.1 美元</td>
+<td>高安全性 + 低价</td>
+<td>Layer 2网络（二层网络）使主网费用最高减少99%</td>
 </tr>
 <tr>
-<td><strong>Solana (SPL)</strong></td>
-<td><strong>Under $0.01</strong></td>
-<td>Microtransactions &amp; speed</td>
-<td>Blazing fast but requires a Solana app setup on your Ledger.</td>
+<td>Solana</td>
+<td>0.01美元以下</td>
+<td>小额交易，速度快</td>
+<td>非常快，但需要在冷钱包里安装 Solana app</td>
 </tr>
 </tbody></table>
-<h3 id="Reason-on-Diff-Fee-rates"><a href="#Reason-on-Diff-Fee-rates" class="headerlink" title="Reason on Diff Fee rates"></a>Reason on Diff Fee rates</h3><p>The massive difference in fee rates between Ethereum, Tron, and Solana comes down to <strong>how they prioritize decentralization versus speed</strong>, the mathematical math behind their code, and how they handle network traffic. </p>
-<p>In crypto, this trade-off is known as the <strong>Blockchain Trilemma</strong> (balancing security, decentralization, and scalability).</p>
+<h3 id="通道费差异巨大的原因"><a href="#通道费差异巨大的原因" class="headerlink" title="通道费差异巨大的原因"></a>通道费差异巨大的原因</h3><p>本质上源于三者对“去中心化“与”速度“的优先级取舍、底层代码的数学设计架构，以及网络流量处理机制的差异。在加密货币领域，这种权衡被称为”区块链三元悖论“（即必须在安全性、去中心化和可扩展性之间取得平衡</p>
 <ol>
-<li>Consensus Mechanism and Hardware (Why Solana is Cheapest)<ul>
-<li><strong>Solana (Proof of History + Proof of Stake):</strong> Solana requires validators to use incredibly powerful, expensive enterprise-grade computers. Because the hardware is so fast, the network can process up to 65,000 transactions per second (TPS). Because the system can handle so much data at once, the cost per individual transaction is fractions of a cent. </li>
-<li><strong>Tron (Delegated Proof of Stake):</strong> Tron limits its network to only 21 “Super Representatives” (validators) who process all data. Because there are only 21 computers running the main network, consensus is reached very fast and transactions are cheap (usually around $1 to $3). However, it is much more centralized than Ethereum. </li>
-<li><strong>Ethereum (Proof of Stake):</strong> Ethereum prioritizes maximum decentralization. It has hundreds of thousands of individual validators running modest hardware all over the world. This makes it highly secure, but it can only process about 15 to 30 transactions per second on its main layer, creating a major data bottleneck.</li>
+<li>共识机制与硬件（为什么索拉纳最便宜）<ul>
+<li>Solana（历史证明PoH + 权益证明PoS）：验证节点需使用<strong>昂贵的企业级超强算力服务器</strong>。凭借硬件的高性能，网络可处理每秒65,000笔交易（TPS）。由于系统能同时吞吐海量数据，单笔交易成本可低至不足1美分。</li>
+<li>Tron（委托权益证明DPoS）：全网仅由21个”超级代表”（验证节点）处理数据。因参与共识的计算机极少，交易确认极快，手续费通常仅<strong>1~3美元。但相比以太坊，其</strong>中心化程度显著更高。</li>
+<li>Ethereum（权益证明PoS）：优先保证最大化去中心化，全球有数十万普通硬件运行的独立验证节点。这使其安全性极高，但主网每秒仅能处理15~30笔交易，形成严重数据瓶颈。</li>
 </ul>
 </li>
-<li>The Bidding War for Space (Why Ethereum is Expensive). When a blockchain gets busy, users must compete to get their transaction processed next.<ul>
-<li><strong>Ethereum’s Auction Model:</strong> When thousands of people want to use Ethereum at the same time, it turns into a blind auction. Users must pay a higher “gas fee” to bribe validators to process their transaction first. During bull markets or popular NFT drops, fees spike to $50+ because people are actively outbidding each other for limited space. </li>
-<li><strong>Solana’s Localized Congestion:</strong> Solana isolates fees by application. If millions of people are buying one specific meme coin, only the fees for <em>that specific coin’s contract</em> rise. Sending standard USDT on the other side of the network remains completely unaffected and ultra-cheap.</li>
+<li>区块空间的竞价战争（为什么Ethereum最贵）当区块链拥堵时，用户需竞价争夺交易处理权<ul>
+<li>Ethereum的拍卖模型：当数千人同时使用时，系统会触发<strong>盲拍机制</strong>。用户需支付更高”Gas费”来贿赂矿工优先处理自己的交易。在牛市或热门NFT发售时，手续费常飙至50美元以上（用户为有限资源相互抬价）。</li>
+<li>Solana的局部拥堵隔离：按应用隔离费用。若数百万人交易某款MEME币，仅该币智能合约的手续费上涨，而网络另一侧的普通USDT转账仍保持超低费率且不受影响。</li>
 </ul>
 </li>
-<li>Smart Contract Complexity. USDT is not a simple native coin; it is a smart contract program.<ul>
-<li>Moving USDT on <strong>Ethereum</strong> requires the network to execute complex code to update balance ledgers across thousands of global nodes, requiring a lot of computational energy. </li>
-<li>Moving USDT on <strong>Solana</strong> utilizes highly optimized, pre-compiled token programs designed specifically to execute data transfers using minimal computing power.</li>
+<li>智能合约的复杂性。USDT并非原生代币，而是基于智能合约的程序：<ul>
+<li>Ethereum上的USDT转账：需全网数千节点执行复杂代码来更新余额账本，<strong>消耗大量计算资源</strong>。</li>
+<li>Solana上的USDT转账：采用高度优化的预编译代币程序，专为<strong>最低功耗执行数据传输</strong>设计。</li>
 </ul>
 </li>
 </ol>
-<h3 id="Justify-the-Risks"><a href="#Justify-the-Risks" class="headerlink" title="Justify the Risks"></a>Justify the Risks</h3><h4 id="What-if-solana’s-super-computer-is-down"><a href="#What-if-solana’s-super-computer-is-down" class="headerlink" title="What if solana’s super computer is down"></a>What if solana’s super computer is down</h4><ol>
-<li>Your Coins Live on the Blockchain, Not the Computer</li>
+<h3 id="风险和故障应对指南"><a href="#风险和故障应对指南" class="headerlink" title="风险和故障应对指南"></a>风险和故障应对指南</h3><p>问题1：如果Solana的超级计算机宕机了怎么办？</p>
+<ol>
+<li>代币存储在区块链上，而非设备中。USDT既不存储在实体Solana计算机里，也不直接存在于Ledger硬件钱包中。它实际上是一条记录在共享公共账本（区块链）上的数字代码。<ul>
+<li>类比理解：区块链如同全球共享的银行账本表格</li>
+<li>网络中断时：账本会被暂时<strong>锁定</strong>，无法新增记录</li>
+<li>数据安全机制：所有现有数据（包括您Ledger地址的余额）仍安全存储于全球数千个硬盘中</li>
+</ul>
+</li>
+<li>Solana网络瘫痪时会发生什么？Solana历史上曾出现短暂网络中断，此时需注意：<ul>
+<li>资金冻结：无法发送、接收或交易USDT</li>
+<li>Ledger Live可能显示$0：因无法连接Solana节点，应用可能短暂显示零余额或报错（切勿恐慌，这只是数据无法同步的显示问题）</li>
+<li>交易暂停处理：崩溃前发起的交易将进入队列或完全失败，资金自动退回原地址</li>
+</ul>
+</li>
+<li>Ledger硬件钱包是终极备份。Ledger设备物理保存着您的<strong>私钥</strong>（由24字助记词生成），这些密钥是您对地址所有权的最核心数学证明。一旦Solana验证节点重启成功：<ul>
+<li>Ledger将自动同步更新后的账本</li>
+<li>USDT余额会精准恢复到中断前的状态</li>
+</ul>
+</li>
 </ol>
-<p>Your USDT does not sit inside a physical Solana computer, nor does it sit inside your Ledger. It exists as a digital line of code on a shared public ledger (the blockchain). </p>
+<p>问题2：如果宕机后，Solana的验证节点并未重启成功怎么办？</p>
+<ol>
+<li>代币数据被全球千次备份。Solana并非由单一公司或集中式超算集群管理，其网络依赖遍布35个以上国家的数百个独立验证节点。<ul>
+<li>每个验证节点都在本地硬盘保存着完全相同的区块链账本历史副本</li>
+<li>即使发生大规模故障且部分主验证节点永久退出，数据仍不会丢失——全球其他活跃节点仍完整保有所有历史记录</li>
+</ul>
+</li>
+<li>新验证节点群可随时重建网络。区块链本质是开源数据。若原运营方完全弃用网络，任何开发者社群都可基于崩溃前最后一个账本”快照”进行恢复：<ul>
+<li>利用该备份数据<strong>重启网络</strong>或创建分叉链（即硬分叉）</li>
+<li>由于Ledger公钥地址及USDT余额已永久写入最后快照，代币将在新链上<strong>自动恢复且完全可支配</strong></li>
+</ul>
+</li>
+<li>私钥赋予绝对所有权（无惧网络状态）。Ledger设备存储着<strong>证明钱包所有权</strong>的数学私钥。验证节点无权：修改余额、删除钱包、篡改历史账本</li>
+</ol>
+<p>问题3：Tron和 Ethereum是否基于同样的逻辑</p>
+<p>是的，Tron和Ethereum同样适用这套机制。代币在公链上永远不会消失——因为它们存在于去中心化的公共账本上，而非某家公司或单台电脑中。从架构设计来看，Tron和Ethereum甚至比Solana具备更强的抗永久关闭能力。</p>
+<p>Ethereum和Tron的进阶容错设计：</p>
 <ul>
-<li>Think of the blockchain like a global banking spreadsheet.</li>
-<li>When the network goes down, the spreadsheet is temporarily <strong>locked</strong> and nobody can add new lines.</li>
-<li>However, the existing data—including the exact balance belonging to your Ledger address—remains safely saved across thousands of hard drives.</li>
+<li>Ethereum：可抵御全球级灾难。以太坊拥有遍布全球的超100万个独立验证节点，且多数节点仅需普通家用电脑即可运行（无需企业级数据中心）。要让全球所有节点同时永久关机，这在实际中根本不可能发生。</li>
+<li>比特币&#x2F;以太坊的先例验证。过去十年间，许多小众区块链曾被开发团队彻底废弃。但由于历史账本数据仍分散保存在全球各地的设备中，这些网络至今仍可访问，所有钱包余额均完好无损。</li>
 </ul>
-<ol start="2">
-<li>What Happens When Solana Freezes?</li>
-</ol>
-<p>Solana has experienced temporary network outages in the past. During an outage:</p>
-<ul>
-<li><strong>Your funds are frozen:</strong> You cannot send, receive, or trade your USDT. </li>
-<li><strong>Ledger Live might show $0:</strong> Because Ledger cannot talk to the Solana network during a crash, your app might temporarily display a balance of zero or show an error message. <strong>Do not panic.</strong> This is just a display glitch because the app can’t fetch data.</li>
-<li><strong>Transactions are paused:</strong> Any transaction you sent right before the crash will either sit in a queue or fail completely, returning the funds to your address.</li>
-</ul>
-<ol start="3">
-<li>Your Ledger is Your Ultimate Backup</li>
-</ol>
-<p>The physical Ledger device holds your <strong>Private Keys</strong> (derived from your 24-word recovery phrase). These keys are the ultimate mathematical proof that you own your specific address.  </p>
-<p>As soon as the Solana validators reboot their systems and the network turns back on, your Ledger will instantly reconnect to the updated spreadsheet, and your USDT will reappear exactly where you left it.</p>
-<h4 id="What-if-the-solana-validators-don’t-reboot-their-systems"><a href="#What-if-the-solana-validators-don’t-reboot-their-systems" class="headerlink" title="What if the solana validators don’t reboot their systems"></a>What if the solana validators don’t reboot their systems</h4><ol>
-<li>Your Coins Are Duplicated Thousands of Times</li>
-</ol>
-<p>Solana is not managed by one single company or a unified cluster of supercomputers. The network relies on <strong>hundreds of independent validators</strong> scattered across over 35 different countries. </p>
-<ul>
-<li>Every single one of these validators keeps an <strong>identical, exact copy</strong> of the entire blockchain ledger history on their local hard drives.</li>
-<li>If a massive outage occurs and a group of main validators decide to permanently walk away, your data is not lost. The remaining active history copies are still fully intact on all the other hard drives globally.</li>
-</ul>
-<ol start="2">
-<li>A New Group of Validators Can Just Pick Up the Pieces</li>
-</ol>
-<p>A blockchain is ultimately open-source data. If the original operators completely abandon the network, any group of engineers or community members can safely take the last recorded “snapshot” of the ledger right before the crash.</p>
-<ul>
-<li>They can use that exact backup data to launch a network restart or a split chain (called a hard fork).</li>
-<li>Because your Ledger public address and your exact USDT balance are permanently written into that last snapshot, your coins would automatically exist and be fully accessible on the revived network.</li>
-</ul>
-<ol start="3">
-<li>Your Private Key Gives You Absolute Ownership</li>
-</ol>
-<p>Your Ledger device holds the mathematical private keys that prove you own your specific wallet address. No validator has the administrative power to change your balances, delete your wallet, or alter the ledger history. As long as you keep your 24-word recovery phrase safe, your ownership over your USDT remains absolute and locked in mathematics, regardless of whether a network is running or temporarily paused. </p>
-<h4 id="So-the-same-logical-with-tron-and-ethereum"><a href="#So-the-same-logical-with-tron-and-ethereum" class="headerlink" title="So the same logical with tron and ethereum"></a>So the same logical with tron and ethereum</h4><p>Yes, the exact same logic applies to <strong>Tron</strong> and <strong>Ethereum</strong>. Your coins will never disappear or be wiped on those networks either, because your funds exist on a decentralized public ledger, not within a single company or computer.</p>
-<p>In fact, Ethereum and Tron are structurally designed to be <strong>even more resilient</strong> to permanent shutdowns than Solana.</p>
-<h5 id="How-Ethereum-and-Tron-Take-This-Safety-Further"><a href="#How-Ethereum-and-Tron-Take-This-Safety-Further" class="headerlink" title="How Ethereum and Tron Take This Safety Further"></a>How Ethereum and Tron Take This Safety Further</h5><ul>
-<li><strong>Ethereum is Built to Survive a Global Collapse:</strong> Ethereum has over one million independent validators worldwide. Many of these validators run on simple, consumer-grade home computers rather than enterprise data centers. It is practically impossible for all one million computers across the globe to turn off and never reboot at the exact same time. </li>
-<li><strong>The Bitcoin&#x2F;Ethereum Precedent:</strong> Over the last decade, many smaller blockchains have been completely abandoned by their original developers. Yet, because the historical ledger data remained on random laptops around the world, those networks still exist today, and the wallet balances remain perfectly intact.</li>
-</ul>
-<h5 id="The-Universal-Rule-for-All-Three-Networks"><a href="#The-Universal-Rule-for-All-Three-Networks" class="headerlink" title="The Universal Rule for All Three Networks"></a>The Universal Rule for All Three Networks</h5><p>Whether you choose Solana, Tron, or Ethereum, the dynamic between your Ledger and the blockchain is identical:</p>
+<p>三大网络的通用安全法则</p>
+<p>无论选择Solana、Tron还是Ethereum，Ledger硬件钱包与区块链的交互逻辑完全一致：</p>
 <table>
 <thead>
 <tr>
-<th>Feature</th>
-<th>Where it Lives &#x2F; What Happens</th>
+<th>功能</th>
+<th>存在位置 &#x2F; 会发生什么</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>Your USDT Balances</strong></td>
-<td>Saved on thousands of hard drives globally (the blockchain ledger).</td>
+<td>USDT 余额</td>
+<td>全球数千个硬盘共同存储（区块链分布式账本）</td>
 </tr>
 <tr>
-<td><strong>Your Right to Spend It</strong></td>
-<td>Generated completely offline by your physical Ledger’s 24-word recovery phrase.</td>
+<td>使用权</td>
+<td>由Ledger硬件的24字助记词离线生成</td>
 </tr>
 <tr>
-<td><strong>If a Network Freezes</strong></td>
-<td>You temporarily cannot move the coins, but the data cannot be erased.</td>
+<td>如果发生断网</td>
+<td>资金可被临时冻结，但数据永不消失</td>
 </tr>
 <tr>
-<td><strong>If the Network Restarts</strong></td>
-<td>Your Ledger instantly reconnects to the ledger, and your balances reappear.</td>
+<td>如果网络恢复</td>
+<td>Ledger硬件钱包将立即同步账本并显示完整余额</td>
 </tr>
 </tbody></table>
-<h4 id="Is-the-majority-trading-concentrated-on-solana"><a href="#Is-the-majority-trading-concentrated-on-solana" class="headerlink" title="Is the majority trading concentrated on solana"></a>Is the majority trading concentrated on solana</h4><p><strong>Yes, Solana handles the majority of decentralized exchange (DEX) trading volume</strong>, recently overtaking Ethereum mainnet and its entire Layer 2 ecosystem combined in on-chain trading activity. </p>
-<p>Driven by sub-cent transaction fees and high-speed execution, Solana handles a massive volume of spot trades, though Ethereum maintains dominance in total institutional value locked (TVL) and market capitalization. </p>
-<h5 id="Why-Solana-Leads-On-Chain-Trading-Volume"><a href="#Why-Solana-Leads-On-Chain-Trading-Volume" class="headerlink" title="Why Solana Leads On-Chain Trading Volume"></a>Why Solana Leads On-Chain Trading Volume</h5><ol>
-<li>High-Frequency and Retail Trading Dominance</li>
-</ol>
-<p>Because transactions cost fractions of a penny, Solana is uniquely built for high-frequency trading and retail consumers. Traders can execute dozens of daily swaps, adjust orders instantly, or buy tiny amounts of crypto without worrying about a $10 gas fee eating into their capital. </p>
-<ol start="2">
-<li>The Volume “Flippening”</li>
-</ol>
-<p>In early 2026, daily on-chain DEX trading volume on Solana officially surged ahead of Ethereum. According to market tracking data: </p>
-<ul>
-<li><strong>Solana’s DEX Volume</strong> captured approximately <strong>38% of all on-chain trading volume</strong> across the entire crypto ecosystem. </li>
-<li><strong>Liquidity Aggregation:</strong> Platforms like <a target="_blank" rel="noopener" href="https://crypticweb3.com/best-dex-in-2026-top-decentralized-exchanges-ranked/">Jupiter</a> route over 60% of Solana’s trade flows flawlessly across automated market makers (AMMs) like Raydium and Meteora, turning the blockchain into a massive, cohesive marketplace.</li>
-</ul>
-<h4 id="The-Catch-Centralized-Exchanges-vs-On-Chain-Volume"><a href="#The-Catch-Centralized-Exchanges-vs-On-Chain-Volume" class="headerlink" title="The Catch: Centralized Exchanges vs. On-Chain Volume"></a>The Catch: Centralized Exchanges vs. On-Chain Volume</h4><p>While Solana dominates <strong>decentralized (on-chain) trading</strong>, it does not capture the majority of global, overall crypto trading. The broader ecosystem is divided into two distinct environments: </p>
+<p>问题4：是否主要的加密币交易都集中在 Solana </p>
+<p>确实，Solana已成为去中心化交易所（DEX）交易量的主导者。其链上交易规模已超越Ethereum主网及其所有Layer 2生态的总和，这得益于不足1美分的交易费用和毫秒级执行速度——尽管Ethereum仍在总锁仓价值（TVL）和市值方面保持优势。</p>
+<p>为何Solana领跑链上交易量？</p>
 <ol>
-<li>Centralized Exchanges (CEXs) Still Rule Total Volume</li>
+<li>高频交易与零售用户的主场。得益于单笔交易成本不足1美分的特性，Solana天生就是为高频交易者和散户打造的：<ul>
+<li>每日可执行数十次代币兑换</li>
+<li>实时调整订单无需担心手续费损耗</li>
+<li>微量加密货币交易不被10美元Gas费吞噬本金</li>
+</ul>
+</li>
+<li>交易量大爆发。2026年初，Solana链上DEX日交易量正式反超以太坊。链上数据显示：<ul>
+<li>Solana DEX交易量占比达全加密货币生态38%</li>
+<li>流动性聚合效应：通过<a target="_blank" rel="noopener" href="https://crypticweb3.com/best-dex-in-2026-top-decentralized-exchanges-ranked/">Jupiter</a>等平台，超60%交易流被无缝路由至Raydium&#x2F;Meteora等AMM协议，形成超级统一市场</li>
+</ul>
+</li>
 </ol>
-<p>The vast majority of absolute global trading volume—especially for heavy hitting assets like Bitcoin and Ethereum—still happens inside massive centralized off-chain order books like Binance or Coinbase. The ratio of total decentralized trading (DEX) to centralized trading (CEX) typically hovers around <strong>13% to 14%</strong>.</p>
-<ol start="2">
-<li>Ethereum Holds the “Big Money”</li>
+<p>另一面真相：CEX与链上交易的分野</p>
+<p>虽然Solana统治着去中心化（链上）交易领域，但全球总体交易量仍集中在：</p>
+<ol>
+<li>中心化交易所（CEX）仍是绝对主力。BTC&#x2F;ETH等核心资产的交易，依旧发生在Binance&#x2F;Coinbase等链下订单簿中。去中心化交易（DEX）仅占全球总交易量的13%-14%。</li>
+<li>Ethereum坐镇”大资金战场”。Solana虽在交易笔数和零售量上取胜，但Ethereum仍掌控：<ul>
+<li>全行业53%的总锁仓价值（TVL）</li>
+<li>对冲基金&#x2F;资管机构因其极致安全性而选择以太坊底层</li>
+<li>大额转账（单笔数十万美元）更依赖Ethereum主网或Arbitrum&#x2F;Base等Layer 2网络</li>
+</ul>
+</li>
 </ol>
-<p>While Solana wins on the absolute <em>number</em> of trades and retail trading volume, Ethereum remains the heavy-industry standard. Large hedge funds, institutions, and major asset managers prefer Ethereum’s base layer because it holds over <strong>53% of all Total Value Locked (TVL)</strong> in crypto. Institutions value Ethereum’s maximum security and long-term stability over Solana’s raw speed. </p>
-<h5 id="Summary-Who-Uses-What"><a href="#Summary-Who-Uses-What" class="headerlink" title="Summary: Who Uses What?"></a>Summary: Who Uses What?</h5><ul>
-<li>Choose <strong>Solana</strong> if you want to trade frequently, explore new consumer tokens, or move retail amounts of USDT with the absolute minimum friction. </li>
-<li>Choose <strong>Ethereum</strong> (or its Layer 2 networks like Arbitrum or Base) if you are moving hundreds of thousands of dollars at a time and want institutional-grade security.</li>
+<p>选链总结</p>
+<ul>
+<li>Solana：高频交易、探索新锐代币、小额USDT转移</li>
+<li>Ethereum：机构级大额资产操作，安全性优先</li>
 </ul>
 
   </div>
